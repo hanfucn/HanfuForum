@@ -4,7 +4,59 @@
     <bookmark url="file://$PROJECT_DIR$/src/main.js" line="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5bf8c9f-abcf-42a0-9edb-482c30376f51" name="Default Changelist" comment="" />
+    <list default="true" id="c5bf8c9f-abcf-42a0-9edb-482c30376f51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/axios/BaseUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/axios/Exception.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/axios/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/axios/restful.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/dev.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-find-index/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/array-find-index/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/camelcase-keys/node_modules/camelcase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/camelcase-keys/node_modules/camelcase/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/camelcase-keys/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/camelcase-keys/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/compressible/HISTORY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/compressible/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/compressible/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/connect-history-api-fallback/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/connect-history-api-fallback/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/connect-history-api-fallback/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/connect-history-api-fallback/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/currently-unhandled/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/currently-unhandled/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventsource/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventsource/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/get-stdin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/get-stdin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/handle-thing/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/handle-thing/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-proxy-middleware/node_modules/is-glob/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/http-proxy-middleware/node_modules/is-glob/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-proxy-middleware/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/http-proxy-middleware/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/indent-string/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/indent-string/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/internal-ip/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/internal-ip/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loud-rejection/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loud-rejection/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-obj/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/map-obj/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/meow/node_modules/minimist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/meow/node_modules/minimist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/meow/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/meow/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/on-headers/HISTORY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/on-headers/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/on-headers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/on-headers/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/redent/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/redent/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs-client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/spdy-transport/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy-transport/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/spdy/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/strip-indent/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/strip-indent/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/time-stamp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/time-stamp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/trim-newlines/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/trim-newlines/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-middleware/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-middleware/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/camelcase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/camelcase/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/debug/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/debug/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/is-fullwidth-code-point/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/is-fullwidth-code-point/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/os-locale/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/os-locale/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/which-module/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/which-module/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/y18n/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/y18n/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,50 +68,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/page/forum/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
+            <state relative-caret-position="3192">
               <caret line="168" selection-start-line="168" selection-end-line="168" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/forum/forumHeader.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
               <folding>
-                <element signature="n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#0;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#1;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#2;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#3;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#4;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#5;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#6;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#7;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#8;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#9;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#10;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#11;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#12;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#13;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#14;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#15;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#16;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#17;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#18;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#ArticleBlock#19;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#Col#1;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#11326#11575#0" expanded="true" />
-                <element signature="e#11769#12510#0" />
+                <element signature="n#MenuItem#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
+                <element signature="n#Submenu#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#AutoComplete#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/axios/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#41#66#0" expanded="true" />
+                <element signature="e#1217#1530#0" />
+                <element signature="e#1572#1852#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/forum/forumHeader.vue">
+        <entry file="file://$PROJECT_DIR$/src/axios/restful.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="49" column="92" selection-start-line="49" selection-start-column="92" selection-end-line="49" selection-end-column="92" />
+            <state relative-caret-position="86">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/dev.env.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/axios/Exception.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
-                <element signature="n#MenuItem#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
-                <element signature="n#Submenu#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#AutoComplete#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#2200#2337#0" expanded="true" />
-                <element signature="e#2393#2530#0" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,10 +136,9 @@
         <entry file="file://$PROJECT_DIR$/src/page/forum/editing.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="n#Col#1;n#Row#0;n#template#0;n#!!top" />
-                <element signature="e#537#592#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,7 +147,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="608">
               <caret line="58" column="21" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="21" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -115,6 +181,9 @@
       <find>autolink</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -136,6 +205,12 @@
         <option value="$PROJECT_DIR$/src/components/forum/header.vue" />
         <option value="$PROJECT_DIR$/src/page/forum/index.vue" />
         <option value="$PROJECT_DIR$/src/components/forum/forumHeader.vue" />
+        <option value="$PROJECT_DIR$/package-lock.json" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/axios/Exception.js" />
+        <option value="$PROJECT_DIR$/config/dev.env.js" />
+        <option value="$PROJECT_DIR$/src/axios/restful.js" />
+        <option value="$PROJECT_DIR$/src/axios/index.js" />
       </list>
     </option>
   </component>
@@ -145,71 +220,43 @@
     <option name="width" value="1940" />
     <option name="height" value="1050" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
+              <item name="huaxiaForum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huaxiaForum" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
+              <item name="huaxiaForum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huaxiaForum" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="huaxiaForum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huaxiaForum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
+              <item name="huaxiaForum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huaxiaForum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="tinymce" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="index-hyh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="index-hyh" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="axios" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,13 +264,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552578638812" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../index" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.selected.package.eslint" value="D:\项目\index-hyh\node_modules\eslint" />
-    <property name="node.js.selected.package.standard" value="D:\项目\index-hyh\node_modules\standard" />
+    <property name="node.js.selected.package.eslint" value="D:\项目\huaxiaForum\node_modules\eslint" />
+    <property name="node.js.selected.package.standard" value="D:\项目\huaxiaForum\node_modules\standard" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -232,6 +279,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\项目\huaxiaForum\src" />
       <recent name="D:\项目\index-hyh\static" />
       <recent name="D:\项目\index-hyh\static\tinymce" />
       <recent name="D:\项目\index-hyh\src\assets" />
@@ -277,17 +325,21 @@
       <workItem from="1552373961808" duration="26515000" />
       <workItem from="1552449381560" duration="25323000" />
       <workItem from="1552572448389" duration="4817000" />
+      <workItem from="1552580592664" duration="627000" />
+      <workItem from="1552581294842" duration="53000" />
+      <workItem from="1552633351238" duration="427000" />
+      <workItem from="1552839920828" duration="1035000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66210000" />
+    <option name="totallyTimeSpent" value="68352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2627346" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27680966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -296,7 +348,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -304,7 +356,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32956153" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -475,41 +527,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/forum/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
+        <state relative-caret-position="3192">
           <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/forum/editing.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#0;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#1;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#2;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#3;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#4;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#5;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#6;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#7;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#8;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#9;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#10;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#11;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#12;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#13;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#14;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#15;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#16;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#17;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#18;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ArticleBlock#19;n#Col#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#Col#1;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#11326#11575#0" expanded="true" />
-            <element signature="e#11769#12510#0" />
+            <element signature="n#Col#1;n#Row#0;n#template#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
+        <state relative-caret-position="608">
           <caret line="58" column="21" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="21" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -520,28 +555,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/forum/editing.vue">
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="n#Col#1;n#Row#0;n#template#0;n#!!top" />
-            <element signature="e#537#592#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="19">
+          <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/forum/forumHeader.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="49" column="92" selection-start-line="49" selection-start-column="92" selection-end-line="49" selection-end-column="92" />
+        <state relative-caret-position="105">
+          <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
           <folding>
             <element signature="n#MenuItem#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
             <element signature="n#Submenu#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#AutoComplete#0;n#Menu#0;n#Row#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#2200#2337#0" expanded="true" />
-            <element signature="e#2393#2530#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/axios/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#41#66#0" expanded="true" />
+            <element signature="e#1217#1530#0" />
+            <element signature="e#1572#1852#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/axios/Exception.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/axios/restful.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
