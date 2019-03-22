@@ -10,7 +10,8 @@ import {
   authorization,
   authorizationRefresh,
   authorizationVerify,
-  authorizationRegister
+  authorizationRegister,
+  article
 } from './restful'
 
 axios.defaults.baseURL = config.API.BASE_URL
@@ -86,6 +87,9 @@ export default {
    * @param {Object} data 请求数据 */
   authorizationRegister: function (method = 'POST', data = {}) {
     return Axios(authorizationRegister(), method, this.Data(data))
+  },
+  article: function (method = 'GET', data = {}, index = null, pagination = {}) {
+    return Axios(article(index), method, this.Data(data, pagination))
   }
   /*
    * 请按照以下规范来完成后端接口对接
@@ -108,7 +112,7 @@ export function Axios (url, method = 'GET', data = {}) {
     }
     const validateStatus = status => {
       /* 定义接口有效状态码范围 */
-      return status >= 200 && status < 300
+      return status >= 199 && status < 300
     }
     axios({
       url: url,

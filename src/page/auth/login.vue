@@ -21,14 +21,14 @@
       <div class="login-form">
         <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
 
-          <FormItem prop="username">
+          <FormItem prop="username" :error="errorValidate.username.message">
             <Input type="text" placeholder="邮箱/用户名" size="large"
                    v-model="formValidate.username">
               <Icon type="ios-person-outline" slot="prepend"></Icon>
             </Input>
           </FormItem>
 
-          <FormItem prop="password">
+          <FormItem prop="password" :error="errorValidate.password.message">
             <Input type="password" placeholder="密码" size="large"
                    v-model="formValidate.password">
               <Icon type="ios-lock-outline" slot="prepend"></Icon>
@@ -59,19 +59,19 @@
       <ul class="login">
         <li>
           <div class="login-icon-item">
-          <Avatar size="large" style="background: #2db7f5;">
-            <i class="icon-qq"></i>
-          </Avatar>
-          <div>QQ</div>
-        </div>
+            <Avatar size="large" style="background: #2db7f5;">
+              <i class="icon-qq"></i>
+            </Avatar>
+            <div>QQ</div>
+          </div>
         </li>
         <li>
           <div class="login-icon-item">
-          <Avatar size="large" style="background: #2db7f5;">
-            <i class="icon-weixin"></i>
-          </Avatar>
-          <div>微信</div>
-        </div>
+            <Avatar size="large" style="background: #2db7f5;">
+              <i class="icon-weixin"></i>
+            </Avatar>
+            <div>微信</div>
+          </div>
         </li>
       </ul>
       <Spin size="large" fix v-if="isValids"></Spin>
@@ -97,10 +97,11 @@
     Divider,
     Avatar,
     Checkbox,
-    Spin
+    Spin,
+    Message
   } from 'iview'
   import '@/assets/Icon-tencent/iconfont.css'
-  // import Axios from '@/axios/index'
+  import Axios from '@/axios/index'
 
   export default {
     name: 'login',
@@ -151,11 +152,18 @@
               validator: password
             }
           ]
+        },
+        errorValidate: {
+          username: {
+            message: null
+          },
+          password: {
+            message: null
+          }
         }
       }
     },
     created () {
-      this.$store.commit('index/setMenuActive', '2')
     },
     mounted () {
       this.$nextTick(() => {
@@ -164,34 +172,37 @@
     },
     methods: {
       onLogin: function () {
+        this.errorValidate.password.message = null
         this.$refs['formValidate'].validate((valid) => {
           if (valid) {
             this.isValids = true
-            // Axios.authorization(this.formValidate.username, this.formValidate.password).then((response) => {
-            //   if (response.status === 200 && response.statusText === 'OK') {
-            //     this.isValids = false
-            //     this.loginLock = true
-            //     this.$store.commit('auth/setAutherization', {
-            //       pk: response.data.user.pk,
-            //       token: response.data.token,
-            //       user: response.data.user.username,
-            //       usercode: response.data.user.usercode,
-            //       verify: true
-            //     })
-            //   }
-            // }).catch(error => {
-            //   if (error.data.non_field_errors[0] === '无法使用提供的认证信息登录。') {
-            //     Message.warning('用户或密码错误')
-            //   }
-            //   this.isValids = false
-            // })
+            Axios.authorization(this.formValidate.username, this.formValidate.password).then((response) => {
+              console.log('then', response)
+              if (response.status === 200 && response.statusText === 'OK') {
+                this.isValids = false
+                this.loginLock = true
+                this.$store.commit('auth/setAutherization', {
+                  pk: response.data.user.id,
+                  token: response.data.token,
+                  user: response.data.user.username,
+                  verify: true
+                })
+              }
+            }).catch(error => {
+              console.log('error', error)
+              if (error.data.non_field_errors[0] === '无法使用提供的认证信息登录。') {
+                Message.warning('用户或密码错误')
+                this.errorValidate.password.message = '用户名或密码错误'
+              }
+              this.isValids = false
+            })
           }
         })
       },
       /* 登录成功后路由跳转 */
       onNext: function () {
         this.$nextTick(() => {
-          this.$router.push({ name: 'index' })
+          this.$router.push({ name: 'forum' })
         })
       }
     },
@@ -307,6 +318,7 @@
     /*line-height: 36px !important;*/
     /*margin-left: -2.5px;*/
   }
+
   >>> .ivu-card {
     background: rgba(255, 255, 255, 0.9);
   }
@@ -322,6 +334,7 @@
     list-style: none;
     text-align: center;
   }
+
   .login li {
     display: inline;
   }

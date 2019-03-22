@@ -19,7 +19,7 @@
       <AutoComplete
         v-model="searchAutoComplete"
         icon="ios-search"
-        placeholder="input here"
+        placeholder="搜索一下更健康"
         style="width:300px">
         <div class="demo-auto-complete-item" v-for="item in searchAutoCompleteData">
           <div class="demo-auto-complete-group">
@@ -45,9 +45,43 @@
         <a href="https://www.google.com/search?q=iView" target="_blank" class="demo-auto-complete-more">查看所有结果</a>
       </AutoComplete>
       <div class="float-right margin-right">
-        <Button type="text" :to="{name: 'login'}">登录</Button>
-        <Button type="warning" ghost shape="circle" class="button-margin-10" :to="{name: 'register'}">注册</Button>
-        <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'editing'}">写文章</Button>
+        <template v-if="!IsVerify">
+          <Button type="text" :to="{name: 'login'}">登录</Button>
+          <Button type="warning" ghost shape="circle" class="button-margin-10" :to="{name: 'register'}">注册</Button>
+          <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'login'}">写文章</Button>
+        </template>
+        <template v-else>
+          <Dropdown @on-click="onDropdownMenu">
+            <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg"/>
+            <DropdownMenu slot="list">
+              <DropdownItem>
+                <Icon class="md-icon" type="md-person"/>
+                我的主页
+              </DropdownItem>
+              <DropdownItem>
+                <Icon class="md-icon" type="md-bookmark"/>
+                收藏的文章
+              </DropdownItem>
+              <DropdownItem>
+                <Icon class="md-icon" type="md-heart" />
+                喜欢的文章
+              </DropdownItem>
+              <DropdownItem>
+                <Icon class="md-icon" type="md-flag"/>
+                参加的活动
+              </DropdownItem>
+              <DropdownItem>
+                <Icon class="md-icon" type="md-text"/>
+                帮助与反馈
+              </DropdownItem>
+              <DropdownItem name="outlogin">
+                <Icon class="md-icon" type="md-exit"/>
+                退出
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'editing'}">写文章</Button>
+        </template>
       </div>
     </Menu>
   </Row>
@@ -63,11 +97,21 @@
     MenuGroup,
     AutoComplete,
     Option,
-    Button
+    Button,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Avatar
   } from 'iview'
 
   export default {
     name: 'forum-header',
+    inject: ['reload'],
+    data: function () {
+      return {
+        IsVerify: false // 登录状态
+      }
+    },
     props: {
       searchAutoComplete: {
         type: String
@@ -85,7 +129,34 @@
       MenuGroup,
       AutoComplete,
       Option,
-      Button
+      Button,
+      Dropdown,
+      DropdownMenu,
+      DropdownItem,
+      Avatar
+    },
+    methods: {
+      onDropdownMenu: function (command) {
+        if (command === 'outlogin') this.outLogin()
+        console.log(command)
+      },
+      outLogin: function () {
+        this.$store.commit('auth/clearAutherization')
+        this.reload()
+      }
+    },
+    created: function () {
+      this.IsVerify = this.$store.getters['auth/getVerify']
+    },
+    computed: {
+      verify: function () {
+        return this.$store.getters['auth/getVerify']
+      }
+    },
+    watch: {
+      verify: function (a, b) {
+        this.IsVerify = a
+      }
     }
   }
 </script>
@@ -101,6 +172,11 @@
 
   .font-red {
     color: red;
+  }
+
+  .md-icon {
+    color: #258cd1;
+    font-weight: bold;
   }
 
   .demo-auto-complete-item {

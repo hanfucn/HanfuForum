@@ -25,19 +25,19 @@
       </div>
       <div class="login-form">
         <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
-          <FormItem prop="username">
+          <FormItem prop="username" :error="errorValidate.username.message">
             <Input type="text" placeholder="用户" size="large"
                    v-model="formValidate.username">
               <Icon type="ios-person-outline" slot="prepend"></Icon>
             </Input>
           </FormItem>
-          <FormItem prop="email">
+          <FormItem prop="email" :error="errorValidate.email.message">
             <Input type="email" placeholder="邮箱" size="large"
                    v-model="formValidate.email">
               <Icon type="ios-mail-outline" slot="prepend"/>
             </Input>
           </FormItem>
-          <FormItem prop="password">
+          <FormItem prop="password" :error="errorValidate.password.message">
             <Input type="password" placeholder="密码" size="large"
                    v-model="formValidate.password"
                    @keyup.enter="onRegister">
@@ -111,7 +111,7 @@
     Alert
   } from 'iview'
   import '@/assets/Icon-tencent/iconfont.css'
-  // import Axios from '@/axios/index'
+  import Axios from '@/axios/index'
 
   export default {
     name: 'register',
@@ -206,36 +206,55 @@
               validator: subpassword
             }
           ]
+        },
+        errorValidate: {
+          email: {
+            message: null
+          },
+          username: {
+            message: null
+          },
+          password: {
+            message: null
+          }
         }
       }
     },
     created: function () {
-      this.$store.commit('index/setMenuActive', '3')
     },
     methods: {
       /* 注册用户 */
       onRegister: function () {
+        this.clearErrorForm()
         this.$refs['formValidate'].validate((valid) => {
           if (valid) {
             this.isValids = true
-            // Axios.modelPrivateUser('POST', {
-            //   email: this.formValidate.email,
-            //   username: this.formValidate.username,
-            //   password: this.formValidate.password,
-            //   groups: []
-            // }).then(response => {
-            //   this.isValids = false
-            //   this.loginLock = true
-            // }).catch(error => {
-            //   this.isValids = false
-            //   if (error.data) {
-            //     /* 可能是用户以注册等错误 */
-            //     if (error.status === 400 && error.data.username) {
-            //       this.errorForm.error = true
-            //       this.errorForm.message = error.data.username[0]
-            //     }
-            //   }
-            // })
+            Axios.authorizationRegister('POST', {
+              email: this.formValidate.email,
+              username: this.formValidate.username,
+              password: this.formValidate.password
+            }).then(response => {
+              this.isValids = false
+              this.loginLock = true
+            }).catch(error => {
+              this.isValids = false
+              if (error.data) {
+                /* 可能是用户以注册等错误 */
+                // if (error.status === 400 && error.data.username) {
+                //   this.errorForm.error = true
+                //   this.errorForm.message = error.data.username[0]
+                // }
+                if (error.status === 400 && error.data) {
+                  if (error.data.email) this.errorValidate.email.message = error.data.email[0]
+                  if (error.data.username) this.errorValidate.username.message = error.data.username[0]
+                  if (error.data.password) this.errorValidate.password.message = error.data.password[0]
+                  if (error.data.email || error.data.username || error.data.password) {
+                    this.errorForm.error = true
+                    this.errorForm.message = '注册账号失败，请核对账号信息'
+                  }
+                }
+              }
+            })
           }
         })
       },
@@ -246,6 +265,9 @@
       clearErrorForm: function () {
         this.errorForm.error = false
         this.errorForm.message = null
+        this.errorValidate.email.message = null
+        this.errorValidate.username.message = null
+        this.errorValidate.password.message = null
       }
     },
     components: {
@@ -368,6 +390,7 @@
     text-align: center;
     line-height: 36px !important;
   }
+
   >>> .ivu-card {
     background: rgba(255, 255, 255, 0.9);
   }

@@ -1,5 +1,5 @@
 <template>
-  <div id="asdasdasdasdasdasd">
+  <div>
     <textarea :id="Id" :value="value"></textarea>
   </div>
 </template>
@@ -7,10 +7,10 @@
   import '@/../static/tinymce/langs/zh_CN.js'
 
   export default {
+    name: 'TinycmeVue',
     data () {
-      const Id = Date.now()
       return {
-        Id: Id,
+        Id: 'TinycmeVue',
         Editor: null,
         message: '',
         /* eslint-disable */
@@ -180,7 +180,7 @@
     beforeDestroy () {
       // 销毁tinymce
       this.$emit('on-destroy')
-      window.tinymce.remove(`$#{this.Id}`)
+      window.tinymce.remove('#TinycmeVue')
     },
     methods: {
       init () {

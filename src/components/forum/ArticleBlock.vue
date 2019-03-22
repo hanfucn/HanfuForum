@@ -3,18 +3,18 @@
     <!--<Divider dashed/>-->
     <Row type="flex" v-if="images">
       <Col span="7" class="text-img">
-        <router-link to="/">
+        <router-link :to="toRouter()">
           <img :src="images">
         </router-link>
       </Col>
       <Col span="17">
         <div class="forum-text left">
           <h3>
-            <router-link to="/">
+            <router-link :to="toRouter()">
               {{ title }}
             </router-link>
           </h3>
-          <span>{{ message }}</span>
+          <span>{{read}}</span>
         </div>
         <div class="forum-other">
           <span v-if="fiery" class="font-red"><Icon type="ios-flame"/> {{ fieryNumber }} </span>
@@ -39,11 +39,11 @@
       <Col span="24">
         <div class="forum-text left">
           <h3>
-            <router-link to="/">
+            <router-link :to="toRouter()">
               {{ title }}
             </router-link>
           </h3>
-          <span>{{ message }}</span>
+          <span>{{read}}</span>
         </div>
         <div class="forum-other">
           <span v-if="fiery" class="font-red"><Icon type="ios-flame"/> {{ fieryNumber }} </span>
@@ -72,10 +72,14 @@
     Col,
     Icon
   } from 'iview'
+  import striphtml from 'js-striphtml'
 
   export default {
     name: 'ArticleBlock',
     props: {
+      pageId: {
+        type: [String, Number]
+      },
       fiery: {
         type: Boolean,
         default: function () {
@@ -120,6 +124,22 @@
       Row,
       Col,
       Icon
+    },
+    computed: {
+      read: function () {
+        // val就是以获取的msg的值
+        return striphtml.stripTags(this.message, ['b'])
+      }
+    },
+    methods: {
+      toRouter: function () {
+        return {
+          name: 'article',
+          params: {
+            pageId: this.pageId
+          }
+        }
+      }
     }
   }
 </script>
@@ -206,6 +226,7 @@
     padding: 15px 0 15px 0;
     border-bottom: 1px solid #f0f0f0;
   }
+
   >>> .ivu-card-body {
     padding-bottom: unset;
     padding-top: unset;

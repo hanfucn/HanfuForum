@@ -2,12 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index'
 
-import forum from '@/page/forum/index'
+const articleIndex = () => import('@/page/forum/index')
+const articleContext = () => import('@/page/forum/articleContext')
+const forumArticle = () => import('@/page/forum/article')
 const AuthIndex = () => import('@/page/auth/index')
 const Login = () => import('@/page/auth/login')
 const Register = () => import('@/page/auth/register')
 
 import tinycmeVue from '@/page/forum/editing'
+
+import t from '../components/textarea'
+
 Vue.use(Router)
 
 export default new Router({
@@ -42,15 +47,20 @@ export default new Router({
     },
     {
       path: '/forum',
-      components: {
-        default: forum
-      },
+      component: articleIndex,
       children: [
         {
           path: '/forum',
           name: 'forum',
           components: {
-            default: forum
+            forumIndex: articleContext
+          }
+        },
+        {
+          path: '/forum/article/:pageId',
+          name: 'article',
+          components: {
+            forumIndex: forumArticle
           }
         }
       ]
@@ -60,6 +70,13 @@ export default new Router({
       name: 'editing',
       components: {
         default: tinycmeVue
+      }
+    },
+    {
+      path: '/t',
+      name: 't',
+      components: {
+        default: t
       }
     }
   ]
