@@ -16,22 +16,33 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-
-<!-- 找回密码 -->
 <template>
-
+  <div class="login-card-center">
+    <h1>华夏衣冠，再造汉唐</h1>
+    <small>华夏复兴，衣冠先行。始于衣冠，达于博远。重树礼乐，再造汉唐！
+    </small>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'retrieve',
-    data () {
-      return {}
-    }
+    name: 'meta'
   }
 </script>
 
 <style scoped>
+  .login-card-center {
+    color: #fff;
+    margin-bottom: 45px;
+    text-align: center;
+  }
 
+  .login-card-center h1 {
+    font-weight: 100;
+  }
+
+  .login-card-center small {
+    font-size: 15px;
+    font-weight: lighter;
+  }
 </style>
-

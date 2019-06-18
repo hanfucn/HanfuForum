@@ -1,10 +1,26 @@
+<!--
+
+Copyright (C) 2019 张珏敏.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
 <!-- 注册账户 -->
 <template>
   <div class="login-card">
-    <div class="login-card-center">
-      <h1>华夏文化研习会</h1>
-      <small>华夏文化研习会 —— 愿同天下士，共复大中华！</small>
-    </div>
+    <Metas></Metas>
     <Card>
       <div slot="title" class="login-title">
         <div class="login-card-left">
@@ -112,7 +128,7 @@
   } from 'iview'
   import '@/assets/Icon-tencent/iconfont.css'
   import Axios from '@/axios/index'
-
+  import Metas from '@/components/auth/meta'
   export default {
     name: 'register',
     data () {
@@ -285,7 +301,8 @@
       Avatar,
       Checkbox,
       Spin,
-      Alert
+      Alert,
+      Metas
     },
     computed: {
       routerLogin: function () {
@@ -330,10 +347,6 @@
     color: #fff;
     margin-bottom: 45px;
     text-align: center;
-  }
-
-  .login-card-center h1 {
-    font-weight: 100;
   }
 
   .login-card-left {

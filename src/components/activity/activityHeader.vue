@@ -17,21 +17,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
 
-<!-- 找回密码 -->
 <template>
 
 </template>
 
 <script>
   export default {
-    name: 'retrieve',
-    data () {
-      return {}
-    }
+    name: 'activityHeader'
   }
 </script>
 
 <style scoped>
 
 </style>
-

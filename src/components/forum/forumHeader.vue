@@ -1,20 +1,33 @@
+<!--
+
+Copyright (C) 2019 张珏敏.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
 <template>
   <Row type="flex" justify="center" class="forum-header-border">
     <Menu mode="horizontal" theme="light" active-name="1">
-      <MenuItem name="1">
+      <MenuItem name="1" :to="{name: 'forum'}">
         <Icon type="md-home"/>
         首页
       </MenuItem>
-      <Submenu name="3">
-        <template slot="title">
-          <Icon type="md-flag"/>
-          活动
-        </template>
-        <MenuGroup title="活动">
-          <MenuItem name="3-1">创建活动</MenuItem>
-          <MenuItem name="3-2">历史活动</MenuItem>
-        </MenuGroup>
-      </Submenu>
+      <MenuItem name="activity" :to="{name: 'activity'}">
+        <Icon type="md-flag"/>
+        活动
+      </MenuItem>
       <!--<Input search placeholder="Enter something..." class="input-search"/>-->
       <AutoComplete
         v-model="searchAutoComplete"
@@ -82,6 +95,7 @@
           </Dropdown>
           <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'editing'}">写文章</Button>
         </template>
+        <!--<Button type="success" ghost shape="circle" class="button-margin-10" :to="{name: 'login'}" icon="md-flag">活动</Button>-->
       </div>
     </Menu>
   </Row>

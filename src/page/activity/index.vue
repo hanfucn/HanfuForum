@@ -17,21 +17,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
 
-<!-- 找回密码 -->
 <template>
-
+  <div>
+    活动列表
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'retrieve',
-    data () {
-      return {}
-    }
+    name: 'activityIndex'
   }
 </script>
 
 <style scoped>
 
 </style>
-
