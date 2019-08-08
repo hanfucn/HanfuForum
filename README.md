@@ -6,9 +6,9 @@
 </p>
 
 
-* [Hanfu 社区 *](https://github.com/ShszCraft/HanfuForum)
-* [Hanfu 移动端](https://github.com/ShszCraft/HanfuApp)
-* [Hanfu 后端 *](https://github.com/ShszCraft/HanfuRestful/)
+* [Hanfu 社区 *](https://github.com/hanfucn/HanfuForum)
+* [Hanfu 移动端](https://github.com/hanfucn/HanfuApp)
+* [Hanfu 后端 *](https://github.com/hanfucn/HanfuRestful/)
 
 
 
@@ -38,13 +38,6 @@ Hanfu 社区 对您的服务器有一定的要求
 
 图
 
-插件系统
-------------
-
-Hanfu 社区 提供了强大的插件系统，您可以通过添加多种多样的插件来为您的皮肤站添加功能。
-
-详情请参阅 [Wiki - 插件系统介绍]()。
-
 自行构建
 ------------
 如果你想为此项目作贡献，或者抢先尝试未发布的新功能，你应该先用 Git 上的代码部署。
@@ -54,16 +47,9 @@ Hanfu 社区 提供了强大的插件系统，您可以通过添加多种多样�
 从 Git 上 clone 源码并安装依赖:
 
 ```bash
-$ git clone git@github.com:ShszCraft/huaxiaRestful.git
-$ python manage.py makemigrations
-$ python manage.py migrate
-$ python manage.py runserver
-```
-
-运行自动化测试（可跳过）：
-
-```bash
-$ python manage.py test
+$ git clone git@github.com:hanfucn/HanfuForum.git
+$ npm i
+$ npm run serve
 ```
 
 接下来请参考「快速安装向导」进行后续安装。
@@ -74,22 +60,6 @@ $ python manage.py test
 
 版权
 ------------
-Copyright (C) 2019 张珏敏.
+Copyright (C) 2019 Hanfucn.
 
->>>
-Hanfu 是基于 GNU General Public License version 3 开放源代码的自由软件，你可以遵照 GPLv3 协议来修改或重新发布本程序。
->>>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+> Hanfu 是基于 GNU General Public License version 3 开放源代码的自由软件，你可以遵照 GPLv3 协议来修改或重新发布本程序。
