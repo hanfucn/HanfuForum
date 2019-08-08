@@ -1,10 +1,10 @@
-// Type definitions for iview 3.1.0
+// Type definitions for iview 3.3.1
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue, { VNode, CreateElement } from "vue";
 
-export declare interface Tree extends Vue {
+export declare class Tree extends Vue {
     /**
      * 可嵌套的节点属性的数组，生成 tree 的数据
      */
@@ -44,6 +44,11 @@ export declare interface Tree extends Vue {
      */
     "check-strictly"?: boolean;
     /**
+     * 开启后，在 show-checkbox 模式下，select 的交互也将转为 check
+     * @default false
+     */
+    "check-directly"?: boolean;
+    /**
      * 点击树节点时触发
      * @default 当前已勾选节点的数组、当前项
      */
@@ -72,7 +77,7 @@ export declare interface Tree extends Vue {
     getCheckedAndIndeterminateNodes(): any[];
 }
 
-export declare interface TreeChild extends Vue {
+export declare class TreeChild extends Vue {
     /**
      * 标题
      */

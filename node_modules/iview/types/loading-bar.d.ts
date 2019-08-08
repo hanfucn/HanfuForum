@@ -1,4 +1,4 @@
-// Type definitions for iview 3.1.0
+// Type definitions for iview 3.3.1
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
@@ -6,7 +6,7 @@ import Vue from 'vue';
 
 export const LoadingBar: LoadingBarClass;
 
-export declare interface LoadingBarClass {
+export declare class LoadingBarClass extends Vue {
   /**
    * 开始从 0 显示进度条，并自动加载进度
    */
@@ -35,7 +35,7 @@ export declare interface LoadingBarClass {
   destroy(): void;
 }
 
-export declare interface LoadingBarConfig {
+export declare class LoadingBarConfig {
   /**
    * 进度条的颜色，默认为 iView 主色 
    * @default primary
@@ -51,6 +51,11 @@ export declare interface LoadingBarConfig {
    * @default 2
    */
   height?: number;
+  /**
+   * 自动消失的延时, 默认为800ms
+   * @default 800
+   */
+  duration?: number;
 }
 
 declare module 'vue/types/vue' {

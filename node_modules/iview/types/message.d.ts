@@ -1,10 +1,10 @@
-// Type definitions for iview 3.1.0
+// Type definitions for iview 3.3.1
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue, { VNode, CreateElement } from "vue";
 
-export declare interface Message {
+export declare class Message extends Vue {
     /**
      * 消息
      * @param config MessageConfig为相关配置,string为待显示的内容
@@ -41,7 +41,7 @@ export declare interface Message {
     destroy(): void;
 }
 
-export declare interface MessageConfig {
+export declare class MessageConfig {
     /**
      * 提示内容
      */

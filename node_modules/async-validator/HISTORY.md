@@ -1,6 +1,18 @@
 # History
 ----
 
+## 1.11.3 / 2019-06-28
+
+- support suppressWarning option when validate
+
+## 1.11.1 / 2019-04-22
+
+- support message as function
+
+## 1.11.0 / 2019-03-22
+
+- support promise usage(asyncValidator)
+
 ## 1.10.1 / 2018-12-18
 
 - support override warning

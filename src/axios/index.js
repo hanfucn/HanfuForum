@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import 'es6-promise/auto'
 import axios from 'axios'
 import Cookies from '@/utils/Cookie'
-import config from '@/../config/dev.env'
+import config from '@/../dev.env'
 
 import {
   authorization,

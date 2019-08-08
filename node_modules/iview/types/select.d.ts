@@ -1,10 +1,10 @@
-// Type definitions for iview 3.1.0
+// Type definitions for iview 3.3.1
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue, { VNode } from 'vue';
 
-export declare interface Select extends Vue {
+export declare class Select extends Vue {
   /**
    * 指定选中项目的 value 值，可以使用 v-model 双向绑定数据。
    * 单选时只接受 String 或 Number，多选时只接受 Array
@@ -89,6 +89,22 @@ export declare interface Select extends Vue {
    */
   'element-id'?: string;
   /**
+   * 开启 transfer 时，给浮层添加额外的 class 名称
+   */
+  'transfer-class-name'?: string;
+  /**
+   * 在 Select 内显示图标
+   */
+  prefix?: string;
+  /**
+   * 多选时最多显示多少个 tag
+   */
+  'max-tag-count'?: number;
+  /**
+   * 隐藏 tag 时显示的内容，参数是剩余项数量
+   */
+  'max-tag-placeholder'?: () => any;
+  /**
    * 选中的Option变化时触发，默认返回 value，如需返回 label，详见 label-in-value 属性	当前选中项
    */
   $emit(eventName: 'on-change'): this;
@@ -112,9 +128,18 @@ export declare interface Select extends Vue {
    * 清空单选项，仅在 clearable="true" 时有效
    */
   clearSingleSelect(): void;
+  /**
+   * slot插槽对象
+   */
+  $slots: {
+    /**
+     * 自定义 Select 内头部图标
+     */
+    prefix: VNode[];
+  };
 }
 
-export declare interface Option extends Vue {
+export declare class Option extends Vue {
   /**
    * 选项值，默认根据此属性值进行筛选，必填
    */
@@ -132,7 +157,7 @@ export declare interface Option extends Vue {
   disabled?: boolean;
 }
 
-export declare interface OptionGroup extends Vue {
+export declare class OptionGroup extends Vue {
   /**
    * 分组的组名
    * @default 空

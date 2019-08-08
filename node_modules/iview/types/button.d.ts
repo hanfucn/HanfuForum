@@ -1,10 +1,10 @@
-// Type definitions for iview 3.1.0
+// Type definitions for iview 3.3.1
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue from 'vue';
 
-export declare interface Button extends Vue {
+export declare class Button extends Vue {
   /**
    * 按钮类型，可选值为 default、primary、dashed、text、info、success、warning、error或者不设置
    * @default default
@@ -66,9 +66,14 @@ export declare interface Button extends Vue {
    * @default _self
    */
   target?: '_blank' | '_self' | '_parent' | '_top';
+  /**
+   * 同 vue-router append
+   * @default false
+   */
+  append?: boolean;
 }
 
-export declare interface ButtonGroup extends Vue {
+export declare class ButtonGroup extends Vue {
   /**
    * 按钮组合大小，可选值为large、small、default或者不设置
    * @default default

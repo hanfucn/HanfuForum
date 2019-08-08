@@ -13,13 +13,13 @@
                     <span :class="[prefixCls + '-nav-prev', scrollable ? '' : prefixCls + '-nav-scroll-disabled']" @click="scrollPrev"><Icon type="ios-arrow-back"></Icon></span>
                     <span :class="[prefixCls + '-nav-next', scrollable ? '' : prefixCls + '-nav-scroll-disabled']" @click="scrollNext"><Icon type="ios-arrow-forward"></Icon></span>
                     <div ref="navScroll" :class="[prefixCls + '-nav-scroll']">
-                        <div ref="nav" :class="[prefixCls + '-nav']" class="nav-text"  :style="navStyle">
+                        <div ref="nav" :class="[prefixCls + '-nav']" :style="navStyle">
                             <div :class="barClasses" :style="barStyle"></div>
                             <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)">
                                 <Icon v-if="item.icon !== ''" :type="item.icon"></Icon>
                                 <Render v-if="item.labelType === 'function'" :render="item.label"></Render>
                                 <template v-else>{{ item.label }}</template>
-                                <Icon v-if="showClose(item)" type="ios-close" @click.native.stop="handleRemove(index)"></Icon>
+                                <Icon :class="[prefixCls + '-close']" v-if="showClose(item)" :type="arrowType" :custom="customArrowType" :size="arrowSize" @click.native.stop="handleRemove(index)"></Icon>
                             </div>
                         </div>
                     </div>
@@ -96,6 +96,10 @@
                 default: false
             },
             beforeRemove: Function,
+            // Tabs 嵌套时，用 name 区分层级
+            name: {
+                type: String
+            },
         },
         data () {
             return {
@@ -165,12 +169,66 @@
                 }
 
                 return style;
+            },
+            // 3.4.0, global setting customArrow 有值时，arrow 赋值空
+            arrowType () {
+                let type = 'ios-close';
+
+                if (this.$IVIEW) {
+                    if (this.$IVIEW.tabs.customCloseIcon) {
+                        type = '';
+                    } else if (this.$IVIEW.tabs.closeIcon) {
+                        type = this.$IVIEW.tabs.closeIcon;
+                    }
+                }
+                return type;
+            },
+            // 3.4.0, global setting
+            customArrowType () {
+                let type = '';
+
+                if (this.$IVIEW) {
+                    if (this.$IVIEW.tabs.customCloseIcon) {
+                        type = this.$IVIEW.tabs.customCloseIcon;
+                    }
+                }
+                return type;
+            },
+            // 3.4.0, global setting
+            arrowSize () {
+                let size = '';
+
+                if (this.$IVIEW) {
+                    if (this.$IVIEW.tabs.closeIconSize) {
+                        size = this.$IVIEW.tabs.closeIconSize;
+                    }
+                }
+                return size;
             }
         },
         methods: {
             getTabs () {
                 // return this.$children.filter(item => item.$options.name === 'TabPane');
-                return findComponentsDownward(this, 'TabPane');
+                const AllTabPanes = findComponentsDownward(this, 'TabPane');
+                const TabPanes = [];
+
+                AllTabPanes.forEach(item => {
+                    if (item.tab && this.name) {
+                        if (item.tab === this.name) {
+                            TabPanes.push(item);
+                        }
+                    } else {
+                        TabPanes.push(item);
+                    }
+                });
+
+                // 在 TabPane 使用 v-if 时，并不会按照预先的顺序渲染，这时可设置 index，并从小到大排序
+                TabPanes.sort((a, b) => {
+                    if (a.index && b.index) {
+                        return a.index > b.index ? 1 : -1;
+                    }
+                });
+                return TabPanes;
             },
             updateNav () {
                 this.navList = [];
