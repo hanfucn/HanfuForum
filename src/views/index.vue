@@ -1,7 +1,7 @@
 <template>
     <div class="forum-header">
         <forum-header :searchAutoComplete="searchAutoComplete"
-                      :topHeader="topHeader"></forum-header>
+                      :topHeader="topHeader" :topAuthUser="topAuthUser"></forum-header>
         <router-view name="default"></router-view>
     </div>
 </template>
@@ -11,6 +11,10 @@
 
   export default {
     name: 'forumIndex',
+    inject: [
+      'loginSigout',
+      'username'
+    ],
     components: {
       'forum-header': forumHeader
     },
@@ -34,7 +38,7 @@
                 toRouter: {
                   name: 'index'
                 },
-                run: null,
+                run: null
               },
               {
                 title: '周日陶然亭户外拍摄',
@@ -44,7 +48,7 @@
                 toRouter: {
                   name: 'index'
                 },
-                run: null,
+                run: null
               },
               {
                 title: '周六后海夜景拍摄',
@@ -54,8 +58,8 @@
                 toRouter: {
                   name: 'index'
                 },
-                run: null,
-              },
+                run: null
+              }
             ]
           },
           {
@@ -74,11 +78,77 @@
                 toRouter: {
                   name: 'index'
                 },
-                run: null,
-              },
+                run: null
+              }
             ]
           }
-        ]
+        ],
+        topAuthUser: {
+          /**
+           * auth: 用户信息
+           * menu: 菜单列表
+           * */
+          auth: {
+            /**
+             * username: 用户名
+             * headimage: 头像地址
+             * */
+            username: null,
+            headimage: require('@/assets/599a521472424.jpg')
+          },
+          menu: [
+            /**
+             * name: 分组名称
+             * childrem: 分组列表
+             * */
+            {
+              toRouter: {
+                name: 'forum'
+              },
+              name: '收藏的文章',
+              icon: 'md-bookmark',
+              run: null
+            },
+            {
+              toRouter: {
+                name: 'forum'
+              },
+              name: '喜欢的文章',
+              icon: 'md-heart',
+              run: null
+            },
+            {
+              toRouter: {
+                name: 'forum'
+              },
+              name: '参加的活动',
+              icon: 'md-flag',
+              run: null
+            },
+            {
+              toRouter: {
+                name: 'forum'
+              },
+              name: '帮助与反馈',
+              icon: 'md-text',
+              run: null
+            },
+            {
+              toRouter: {
+                name: 'forum'
+              },
+              name: '退出',
+              icon: 'md-exit',
+              run: this.outLogin
+            }
+          ]
+        }
+      }
+    },
+    methods: {
+      outLogin: function () {
+        this.$store.commit('auth/clearAutherization')
+        this.reload()
       }
     }
   }

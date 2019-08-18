@@ -1,5 +1,5 @@
 <template>
-    <Card dis-hover :bordered="false" class="border-bottom">
+    <Card dis-hover :bordered="false" class="border-bottom" style="overflow: hidden;">
         <!--<Divider dashed/>-->
         <Row type="flex" v-if="images">
             <Col :md="7" class="text-img">
@@ -153,6 +153,8 @@
     .text-img {
         display: flex;
         align-items: center;
+        height: 120px;
+        overflow: hidden;
     }
 
     .center-text img {

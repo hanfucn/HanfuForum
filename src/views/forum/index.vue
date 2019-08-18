@@ -1,19 +1,19 @@
 <template>
     <div class="container">
         <Row type="flex" justify="center" class="center-text">
-            <div class=" center-text">
+            <div class="center-text">
                 <Col :md="16">
 
                     <!-- 活动 -->
-<!--                    <div>-->
-<!--                        <ArticleBlock-->
-<!--                                :fiery="true"-->
-<!--                                title="三生三世凤尾归来"-->
-<!--                                message="少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你..."-->
-<!--                                fieryNumber="25.4k"-->
-<!--                                :activity="true"-->
-<!--                                :images="require('../../assets/0.jpg')"></ArticleBlock>-->
-<!--                    </div>-->
+                    <!--                    <div>-->
+                    <!--                        <ArticleBlock-->
+                    <!--                                :fiery="true"-->
+                    <!--                                title="三生三世凤尾归来"-->
+                    <!--                                message="少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你..."-->
+                    <!--                                fieryNumber="25.4k"-->
+                    <!--                                :activity="true"-->
+                    <!--                                :images="require('../../assets/0.jpg')"></ArticleBlock>-->
+                    <!--                    </div>-->
                     <!-- 活动 -->
 
                     <!-- 文章 -->

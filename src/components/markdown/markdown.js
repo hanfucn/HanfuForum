@@ -1,12 +1,12 @@
-import hljs from './js/hljs';
-import marked from 'marked';
+import hljs from './js/hljs'
+import marked from 'marked'
 import {
   saveFile
-} from "./js/utils";
-import defaultTools from './js/tools';
+} from './js/utils'
+import defaultTools from './js/tools'
 
-hljs.initHighlightingOnLoad();
-const renderer = new marked.Renderer();
+hljs.initHighlightingOnLoad()
+const renderer = new marked.Renderer()
 
 marked.setOptions({
   renderer,
@@ -17,9 +17,9 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   highlight: function (code) {
-    return hljs.highlightAuto(code).value;
+    return hljs.highlightAuto(code).value
   }
-});
+})
 
 export default {
   name: 'markdown',
@@ -34,7 +34,7 @@ export default {
     initialValue: String, // 初始化内容
     value: {
       type: String,
-      default() {
+      default () {
         return ''
       }
     }, // 自定义组件的 v-model
@@ -52,8 +52,8 @@ export default {
     }, // 宽度
     toolbars: { // 工具栏
       type: Object,
-      default() {
-        return {};
+      default () {
+        return {}
       }
     },
     autoSave: { // 是否自动保存
@@ -70,12 +70,12 @@ export default {
     },
     markedOptions: {
       type: Object,
-      default() {
-        return {};
+      default () {
+        return {}
       }
     }
   },
-  data() {
+  data () {
     return {
       values: '', // 输入框内容
       timeoutId: null,
@@ -96,256 +96,256 @@ export default {
       previewImgModal: false,
       previewImgSrc: '',
       previewImgMode: ''
-    };
+    }
   },
   computed: {
-    tools() {
+    tools () {
       const {
         toolbars = {}
-      } = this;
+      } = this
       return {
         ...defaultTools,
         ...toolbars
       }
     }
   },
-  mounted() {
-    this.init();
+  mounted () {
+    this.init()
     setTimeout(() => {
-      const textarea = this.$refs.textarea;
-      textarea.focus();
+      const textarea = this.$refs.textarea
+      textarea.focus()
       textarea.addEventListener('keydown', e => {
         if (e.keyCode === 83) {
           if (e.metaKey || e.ctrlKey) {
-            e.preventDefault();
-            this.handleSave();
+            e.preventDefault()
+            this.handleSave()
           }
         }
       })
-      textarea.addEventListener('paste', this.handlePaste);
+      textarea.addEventListener('paste', this.handlePaste)
       if (this.autoSave) {
         this.timerId = setInterval(() => {
-          this.handleSave();
-        }, this.interval);
+          this.handleSave()
+        }, this.interval)
       }
     }, 20)
   },
   methods: {
-    init() {
-      this.values = this.initialValue;
-      this.themeName = this.theme;
-      this.editorHeight = this.height;
-      this.editorWidth = this.width;
+    init () {
+      this.values = this.initialValue
+      this.themeName = this.theme
+      this.editorHeight = this.height
+      this.editorWidth = this.width
     },
-    handlePaste(e) { // 粘贴图片
+    handlePaste (e) { // 粘贴图片
       const {
         clipboardData = {}
-      } = e;
+      } = e
       const {
         types = [], items
-      } = clipboardData;
-      let item = null;
+      } = clipboardData
+      let item = null
       for (let i = 0; i < types.length; i++) {
         if (types[i] === 'Files') {
-          item = items[i];
-          break;
+          item = items[i]
+          break
         }
       }
       if (item) {
-        const file = item.getAsFile();
+        const file = item.getAsFile()
         if (/image/ig.test(file.type)) {
-          this.$emit('on-paste-image', file);
-          e.preventDefault();
+          this.$emit('on-paste-image', file)
+          e.preventDefault()
         }
       }
     },
-    markdownScroll() {
+    markdownScroll () {
       const {
         scrolling
-      } = this;
+      } = this
       if (!scrolling) {
-        return;
+        return
       }
       if (this.scroll === 'markdown') {
-        const markdownContent = this.$refs.markdownContent;
-        const preview = this.$refs.preview;
-        const markdownScrollHeight = markdownContent.scrollHeight;
-        const markdownScrollTop = markdownContent.scrollTop;
-        const previewScrollHeight = preview.scrollHeight;
-        preview.scrollTop = parseInt(markdownScrollTop / markdownScrollHeight * previewScrollHeight, 0);
+        const markdownContent = this.$refs.markdownContent
+        const preview = this.$refs.preview
+        const markdownScrollHeight = markdownContent.scrollHeight
+        const markdownScrollTop = markdownContent.scrollTop
+        const previewScrollHeight = preview.scrollHeight
+        preview.scrollTop = parseInt(markdownScrollTop / markdownScrollHeight * previewScrollHeight, 0)
       }
     },
-    previewScroll() {
+    previewScroll () {
       const {
         scrolling
-      } = this;
+      } = this
       if (!scrolling) {
-        return;
+        return
       }
       if (this.scroll === 'preview') {
-        const markdownContent = this.$refs.markdownContent;
-        const preview = this.$refs.preview;
-        const markdownScrollHeight = markdownContent.scrollHeight;
-        const previewScrollHeight = preview.scrollHeight;
-        const previewScrollTop = preview.scrollTop;
-        markdownContent.scrollTop = parseInt(previewScrollTop / previewScrollHeight * markdownScrollHeight, 0);
+        const markdownContent = this.$refs.markdownContent
+        const preview = this.$refs.preview
+        const markdownScrollHeight = markdownContent.scrollHeight
+        const previewScrollHeight = preview.scrollHeight
+        const previewScrollTop = preview.scrollTop
+        markdownContent.scrollTop = parseInt(previewScrollTop / previewScrollHeight * markdownScrollHeight, 0)
       }
     },
-    mousescrollSide(side) { // 设置究竟是哪个半边在主动滑动
-      this.scroll = side;
+    mousescrollSide (side) { // 设置究竟是哪个半边在主动滑动
+      this.scroll = side
     },
-    insertContent(initStr) { // 插入文本
+    insertContent (initStr) { // 插入文本
       const {
         preview
-      } = this;
+      } = this
       if (preview === 2) {
-        return;
+        return
       }
-      this.lastInsert = initStr;
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      const lastFourCharts = this.values.substring(point - 4, point);
+      this.lastInsert = initStr
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      const lastFourCharts = this.values.substring(point - 4, point)
       if (lastChart !== '\n' && this.values !== '' && lastFourCharts !== '    ') {
-        const str = '\n' + initStr;
-        this.insertAfterText(str);
+        const str = '\n' + initStr
+        this.insertAfterText(str)
       } else {
-        this.insertAfterText(initStr);
+        this.insertAfterText(initStr)
       }
     },
-    getCursortPosition() { // 获取光标位置
-      const textDom = this.$refs.textarea;
-      let cursorPos = 0;
+    getCursortPosition () { // 获取光标位置
+      const textDom = this.$refs.textarea
+      let cursorPos = 0
       if (document.selection) {
-        textDom.focus();
-        let selectRange = document.selection.createRange();
-        selectRange.moveStart('character', -this.values.length);
-        cursorPos = selectRange.text.length;
+        textDom.focus()
+        let selectRange = document.selection.createRange()
+        selectRange.moveStart('character', -this.values.length)
+        cursorPos = selectRange.text.length
       } else if (textDom.selectionStart || parseInt(textDom.selectionStart, 0) === 0) {
-        cursorPos = textDom.selectionStart;
+        cursorPos = textDom.selectionStart
       }
-      return cursorPos;
+      return cursorPos
     },
-    insertAfterText(value) { // 插入文本
-      const textDom = this.$refs.textarea;
-      let selectRange;
+    insertAfterText (value) { // 插入文本
+      const textDom = this.$refs.textarea
+      let selectRange
       if (document.selection) {
-        textDom.focus();
-        selectRange = document.selection.createRange();
-        selectRange.text = value;
-        textDom.focus();
+        textDom.focus()
+        selectRange = document.selection.createRange()
+        selectRange.text = value
+        textDom.focus()
       } else if (textDom.selectionStart || parseInt(textDom.selectionStart, 0) === 0) {
-        const startPos = textDom.selectionStart;
-        const endPos = textDom.selectionEnd;
-        const scrollTop = textDom.scrollTop;
-        textDom.value = textDom.value.substring(0, startPos) + value + textDom.value.substring(endPos, textDom.value.length);
-        textDom.focus();
-        textDom.selectionStart = startPos + value.length;
-        textDom.selectionEnd = startPos + value.length;
-        textDom.scrollTop = scrollTop;
+        const startPos = textDom.selectionStart
+        const endPos = textDom.selectionEnd
+        const scrollTop = textDom.scrollTop
+        textDom.value = textDom.value.substring(0, startPos) + value + textDom.value.substring(endPos, textDom.value.length)
+        textDom.focus()
+        textDom.selectionStart = startPos + value.length
+        textDom.selectionEnd = startPos + value.length
+        textDom.scrollTop = scrollTop
       } else {
-        textDom.value += value;
-        textDom.focus();
+        textDom.value += value
+        textDom.focus()
       }
-      this.$set(this, 'values', textDom.value);
+      this.$set(this, 'values', textDom.value)
     },
-    setCaretPosition(position) { // 设置光标位置
-      const textDom = this.$refs.textarea;
+    setCaretPosition (position) { // 设置光标位置
+      const textDom = this.$refs.textarea
       if (textDom.setSelectionRange) {
-        textDom.focus();
-        textDom.setSelectionRange(position, position);
+        textDom.focus()
+        textDom.setSelectionRange(position, position)
       } else if (textDom.createTextRange) {
-        let range = textDom.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', position);
-        range.moveStart('character', position);
-        range.select();
+        let range = textDom.createTextRange()
+        range.collapse(true)
+        range.moveEnd('character', position)
+        range.moveStart('character', position)
+        range.select()
       }
     },
-    insertQuote() { // 引用
-      this.insertContent('\n>  ');
+    insertQuote () { // 引用
+      this.insertContent('\n>  ')
     },
-    insertUl() { // 无需列表
-      this.insertContent('-  ');
+    insertUl () { // 无需列表
+      this.insertContent('-  ')
     },
-    insertOl() { // 有序列表
-      this.insertContent('1. ');
+    insertOl () { // 有序列表
+      this.insertContent('1. ')
     },
-    insertFinished() { // 已完成列表
-      this.insertContent('- [x]  ');
+    insertFinished () { // 已完成列表
+      this.insertContent('- [x]  ')
     },
-    insertNotFinished() { // 未完成列表
-      this.insertContent('- [ ]  ');
+    insertNotFinished () { // 未完成列表
+      this.insertContent('- [ ]  ')
     },
-    insertLink() { // 插入链接
-      this.insertContent('\n[插入链接](href)');
+    insertLink () { // 插入链接
+      this.insertContent('\n[插入链接](href)')
     },
-    insertImage() { // 插入图片
-      this.insertContent('\n![image](imgUrl)');
+    insertImage () { // 插入图片
+      this.insertContent('\n![image](imgUrl)')
     },
-    insertTable() { // 插入表格
-      this.insertContent('\nheader 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2\n\n');
+    insertTable () { // 插入表格
+      this.insertContent('\nheader 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2\n\n')
     },
-    insertCode() { // 插入code
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('\n```\n\n```');
+    insertCode () { // 插入code
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('\n```\n\n```')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 5);
+        this.setCaretPosition(point + 5)
       } else {
-        this.setCaretPosition(point + 5);
+        this.setCaretPosition(point + 5)
       }
     },
-    insertStrong() { // 粗体
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('****');
+    insertStrong () { // 粗体
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('****')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 2);
+        this.setCaretPosition(point + 2)
       } else {
-        this.setCaretPosition(point + 2);
+        this.setCaretPosition(point + 2)
       }
     },
-    insertItalic() { // 斜体
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('**');
+    insertItalic () { // 斜体
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('**')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 1);
+        this.setCaretPosition(point + 1)
       } else {
-        this.setCaretPosition(point + 1);
+        this.setCaretPosition(point + 1)
       }
     },
-    insertBg() { // 背景色
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('====');
+    insertBg () { // 背景色
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('====')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 5);
+        this.setCaretPosition(point + 5)
       } else {
-        this.setCaretPosition(point + 5);
+        this.setCaretPosition(point + 5)
       }
     },
-    insertUnderline() { // 下划线
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('<u></u>');
+    insertUnderline () { // 下划线
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('<u></u>')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 3);
+        this.setCaretPosition(point + 3)
       } else {
-        this.setCaretPosition(point + 5);
+        this.setCaretPosition(point + 5)
       }
     },
-    insertOverline() { // overline
-      const point = this.getCursortPosition();
-      const lastChart = this.values.substring(point - 1, point);
-      this.insertContent('~~~~');
+    insertOverline () { // overline
+      const point = this.getCursortPosition()
+      const lastChart = this.values.substring(point - 1, point)
+      this.insertContent('~~~~')
       if (lastChart !== '\n' && this.values !== '') {
-        this.setCaretPosition(point + 2);
+        this.setCaretPosition(point + 2)
       } else {
-        this.setCaretPosition(point + 2);
+        this.setCaretPosition(point + 2)
       }
     },
-    insertTitle(level) { // 插入标题
+    insertTitle (level) { // 插入标题
       const titleLevel = {
         1: '#  ',
         2: '##  ',
@@ -353,150 +353,150 @@ export default {
         4: '####  ',
         5: '#####  ',
         6: '######  '
-      };
-      this.insertContent(titleLevel[level]);
+      }
+      this.insertContent(titleLevel[level])
     },
-    tab(e) { // 屏蔽teatarea tab默认事件
-      this.insertContent('    ', this);
+    tab (e) { // 屏蔽teatarea tab默认事件
+      this.insertContent('    ', this)
       if (e.preventDefault) {
-        e.preventDefault();
+        e.preventDefault()
       } else {
-        e.returnValue = false;
+        e.returnValue = false
       }
     },
-    handleSave() { // 保存操作
+    handleSave () { // 保存操作
       const {
         value,
         html,
         themeName
-      } = this;
+      } = this
       this.$emit('on-save', {
         theme: themeName,
         value,
         html
-      });
+      })
     },
-    insertLine() { // 插入分割线
-      this.insertContent('\n----\n');
+    insertLine () { // 插入分割线
+      this.insertContent('\n----\n')
     },
-    toggleSlideDown() { // 显示主题选项
-      this.slideDown = !this.slideDown;
+    toggleSlideDown () { // 显示主题选项
+      this.slideDown = !this.slideDown
     },
-    setThemes(name) { // 设置主题
-      this.themeName = name;
-      this.themeSlideDown = false;
+    setThemes (name) { // 设置主题
+      this.themeName = name
+      this.themeSlideDown = false
     },
-    enter() { // 回车事件
+    enter () { // 回车事件
       const {
         lastInsert
-      } = this;
+      } = this
       const list = ['-  ', '1. ', '- [ ]  ', '- [x]  ']
       if (list.includes(lastInsert)) {
-        this.insertContent(lastInsert);
+        this.insertContent(lastInsert)
       }
     },
-    onDelete() { // 删除时,以回车为界分割，如果数组最后一个元素为''时，将行一次插入的共嗯那个置为空，避免回车时再次插入
-      const lines = this.values.split('\n');
+    onDelete () { // 删除时,以回车为界分割，如果数组最后一个元素为''时，将行一次插入的共嗯那个置为空，避免回车时再次插入
+      const lines = this.values.split('\n')
       if (lines[lines.length - 1] === '') {
-        this.lastInsert = '';
+        this.lastInsert = ''
       }
     },
-    exportMd() { // 导出为.md格式
-      saveFile(this.values, this.exportFileName + '.md');
+    exportMd () { // 导出为.md格式
+      saveFile(this.values, this.exportFileName + '.md')
     },
-    importFile(e) { // 导入本地文件
-      const file = e.target.files[0];
+    importFile (e) { // 导入本地文件
+      const file = e.target.files[0]
       if (!file) {
-        return;
+        return
       }
       const {
         type
-      } = file;
+      } = file
       if (type !== 'text/markdown') {
-        this.$Notice.error('文件格式有误!');
-        return;
+        this.$Notice.error('文件格式有误!')
+        return
       }
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.readAsText(file, {
         encoding: 'utf-8'
-      });
+      })
       reader.onload = () => {
-        this.values = reader.result;
-        e.target.value = '';
+        this.values = reader.result
+        e.target.value = ''
       }
     },
-    addImageClickLintener() { // 监听查看大图
+    addImageClickLintener () { // 监听查看大图
       const {
         imgs
-      } = this;
+      } = this
       if (imgs.length > 0) {
         for (let i = 0, len = imgs.length; i < len; i++) {
-          imgs[i].onclick = null;
+          imgs[i].onclick = null
         }
       }
       setTimeout(() => {
-        this.imgs = this.$refs.preview.querySelectorAll('img');
+        this.imgs = this.$refs.preview.querySelectorAll('img')
         for (let i = 0, len = this.imgs.length; i < len; i++) {
           this.imgs[i].onclick = () => {
-            const src = this.imgs[i].getAttribute('src');
-            this.previewImage(src);
+            const src = this.imgs[i].getAttribute('src')
+            this.previewImage(src)
           }
         }
-      }, 600);
+      }, 600)
     },
-    previewImage(src) { // 预览图片
-      const img = new Image();
-      img.src = src;
+    previewImage (src) { // 预览图片
+      const img = new Image()
+      img.src = src
       img.onload = () => {
-        const width = img.naturalWidth;
-        const height = img.naturalHeight;
+        const width = img.naturalWidth
+        const height = img.naturalHeight
         if ((height / width) > 1.4) {
-          this.previewImgMode = 'horizontal';
+          this.previewImgMode = 'horizontal'
         } else {
-          this.previewImgMode = 'vertical';
+          this.previewImgMode = 'vertical'
         }
-        this.previewImgSrc = src;
-        this.previewImgModal = true;
+        this.previewImgSrc = src
+        this.previewImgModal = true
       }
     },
-    getValue() {
+    getValue () {
       return this.value
     }
   },
   watch: {
-    initialValue() {
-      this.values = this.initialValue;
+    initialValue () {
+      this.values = this.initialValue
     },
-    value() {
+    value () {
       this.values = this.value
     },
-    values() {
-      clearTimeout(this.timeoutId);
+    values () {
+      clearTimeout(this.timeoutId)
       this.timeoutId = setTimeout(() => {
         this.html = marked(this.values, {
           sanitize: false,
           ...this.markedOptions
-        });
+        })
       }, 30)
-      this.indexLenth = this.values.split('\n').length;
-      const height1 = this.indexLenth * 22;
-      const height2 = this.$refs.textarea.scrollHeight;
-      const height3 = this.$refs.preview.scrollHeight;
-      this.scrollHeight = Math.max(height1, height2, height3);
-      this.indexLenth = parseInt(this.scrollHeight / 22, 0) - 1;
-      this.addImageClickLintener();
+      this.indexLenth = this.values.split('\n').length
+      const height1 = this.indexLenth * 22
+      const height2 = this.$refs.textarea.scrollHeight
+      const height3 = this.$refs.preview.scrollHeight
+      this.scrollHeight = Math.max(height1, height2, height3)
+      this.indexLenth = parseInt(this.scrollHeight / 22, 0) - 1
+      this.addImageClickLintener()
     },
-    theme() {
-      this.themeName = this.theme;
+    theme () {
+      this.themeName = this.theme
     },
-    height() {
-      this.editorHeight = this.height;
+    height () {
+      this.editorHeight = this.height
     },
-    width() {
-      this.editorWidth = this.width;
+    width () {
+      this.editorWidth = this.width
     }
   },
-  destroyed() { // 销毁时清除定时器
-    clearInterval(this.timerId);
+  destroyed () { // 销毁时清除定时器
+    clearInterval(this.timerId)
   }
-};
+}

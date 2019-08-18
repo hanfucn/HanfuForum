@@ -1,22 +1,3 @@
-<!--
-
-Copyright (C) 2019 张珏敏.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
-
 <template>
   <Row>
     <Col span="4" class="menu">
@@ -43,28 +24,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </template>
         </div>
 
-        <Upload
-            ref="upload"
-            :format="['jpg','jpeg','png']"
-            :max-size="2048"
-            type="drag"
-            name="images"
-            :paste="true"
-            :data="data"
-            :headers="headers"
-            :default-file-list="fileList"
-            :before-upload="beforeUpload"
-            :on-progress="onUploadProgress"
-            :on-success="onUploadSuccess"
-            :on-error="onUploadError"
-            :on-preview="onUploadPreview"
-            :on-remove="onUploadRemove"
-            action="http://127.0.0.1:8000/app/article/">
-          <div style="padding: 20px 0">
-            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-            <p>请上传文章封面图，用于首页效果展示</p>
-          </div>
-        </Upload>
       </div>
     </Col>
 
@@ -74,20 +33,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <Input v-model="title" placeholder="无标题。。。"/>
         </template>
         <markdown v-model="text"
+                  :headers="headers"
+                  @on-value="gethtml"
                   :initialValue="initialValue"></markdown>
       </Card>
     </Col>
-
-    <!--    <Col span="10">-->
-    <!--      <Card :bordered="false" dis-hover>-->
-    <!--        <div>-->
-    <!--          <div v-if="title">{{ title }}</div>-->
-    <!--          <span v-else class="font-color">无标题...</span>-->
-    <!--        </div>-->
-    <!--        <Divider orientation="left">预览</Divider>-->
-    <!--        <div class="context-text" v-html="text"></div>-->
-    <!--      </Card>-->
-    <!--    </Col>-->
     <div v-if="isUpload.default">
       <Spin fix>
         <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
@@ -125,6 +75,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         userId: Number(Autherization.pk),
         title: '',
         text: '',
+        html: '',
         initialValue: '',
         uploadFileImage: [],
         isUpload: {
@@ -164,6 +115,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       Icon
     },
     methods: {
+      gethtml: function (html) {
+        this.html = html
+        console.log('html', html)
+      },
       // 上传文件之前
       beforeUpload: function (file) {
         return true
@@ -207,7 +162,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         }
 
         if (this.title) datas['name'] = this.title
-        if (this.text) datas['text'] = this.text
+        if (this.html) datas['text'] = this.html
         this.isUpload.default = true
         Axiox.article(method, datas, index).then(response => {
           this.pid = response.id

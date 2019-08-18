@@ -5,7 +5,6 @@
 
             <b-navbar-brand href="#" left>
                 <div class="layout-logo">{{topName}}</div>
-                <!--style="position: absolute; top:0; line-height: normal;   "-->
             </b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse" @click="onCollapse"></b-navbar-toggle>
@@ -69,28 +68,8 @@
                             <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg"/>
                             <DropdownMenu slot="list">
                                 <DropdownItem v-for="(item, key) in topAuthUser" :key="key">
-                                    <Icon class="md-icon" type="md-person"/>
+                                    <Icon class="md-icon" :type="item.icon"/>
                                     {{item.name}}
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <Icon class="md-icon" type="md-bookmark"/>
-                                    收藏的文章
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <Icon class="md-icon" type="md-heart"/>
-                                    喜欢的文章
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <Icon class="md-icon" type="md-flag"/>
-                                    参加的活动
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <Icon class="md-icon" type="md-text"/>
-                                    帮助与反馈
-                                </DropdownItem>
-                                <DropdownItem name="outlogin">
-                                    <Icon class="md-icon" type="md-exit"/>
-                                    退出
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
@@ -178,7 +157,7 @@
           /**
            * topName: 头部导航栏 logo信息，网站名称
            */
-          return 'Hanfu'
+          return '汉服行'
         }
       },
       topActive: {
@@ -239,52 +218,44 @@
                * childrem: 分组列表
                * */
               {
-                name: '使用',
-                childrem: [
-                  /**
-                   * name: 菜单名称
-                   * icon: 菜单ico图标
-                   * run: 菜单运行的方法，可预定义
-                   * toRouter: 路由信息
-                   * */
-                  {
-                    toRouter: {
-                      name: 'index'
-                    },
-                    name: '个人中心',
-                    icon: 'ios-document',
-                    run: null
-                  },
-                  {
-                    toRouter: {
-                      name: 'index'
-                    },
-                    name: '通知',
-                    icon: 'ios-document',
-                    run: null
-                  }
-                ]
+                toRouter: {
+                  name: 'forum'
+                },
+                name: '收藏的文章',
+                icon: 'md-bookmark',
+                run: null
               },
               {
-                name: '账户',
-                childrem: [
-                  {
-                    toRouter: {
-                      name: 'index'
-                    },
-                    name: '修改密码',
-                    icon: 'ios-document',
-                    run: null
-                  },
-                  {
-                    toRouter: {
-                      name: 'index'
-                    },
-                    name: '退出登录',
-                    icon: 'ios-document',
-                    run: null // this.loginSigout()
-                  }
-                ]
+                toRouter: {
+                  name: 'forum'
+                },
+                name: '喜欢的文章',
+                icon: 'md-heart',
+                run: null
+              },
+              {
+                toRouter: {
+                  name: 'forum'
+                },
+                name: '参加的活动',
+                icon: 'md-flag',
+                run: null
+              },
+              {
+                toRouter: {
+                  name: 'forum'
+                },
+                name: '帮助与反馈',
+                icon: 'md-text',
+                run: null
+              },
+              {
+                toRouter: {
+                  name: 'forum'
+                },
+                name: '退出',
+                icon: 'md-exit',
+                run: null // this.outLogin
               }
             ]
           }
