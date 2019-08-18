@@ -69,21 +69,32 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </Col>
 
     <Col span="20" class="border-right">
-      <Card :bordered="false" dis-hover style="position: fixed; width: inherit;">
+      <Card :bordered="false" dis-hover>
         <template slot="title">
           <Input v-model="title" placeholder="无标题。。。"/>
         </template>
-
-        <mark-down
-            style="height: -webkit-fill-available; padding-bottom: 60px; width: inherit;"
-            :initialValue="initialValue"
-            v-model="text"
-            @on-save="onSave"
-            @on-paste-image="onPasteImage">
-        </mark-down>
-
+        <markdown v-model="text"
+                  :initialValue="initialValue"></markdown>
       </Card>
     </Col>
+
+    <!--    <Col span="10">-->
+    <!--      <Card :bordered="false" dis-hover>-->
+    <!--        <div>-->
+    <!--          <div v-if="title">{{ title }}</div>-->
+    <!--          <span v-else class="font-color">无标题...</span>-->
+    <!--        </div>-->
+    <!--        <Divider orientation="left">预览</Divider>-->
+    <!--        <div class="context-text" v-html="text"></div>-->
+    <!--      </Card>-->
+    <!--    </Col>-->
+    <div v-if="isUpload.default">
+      <Spin fix>
+        <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
+        <div>{{ isUpload.message }}</div>
+      </Spin>
+    </div>
+
   </Row>
 </template>
 
@@ -91,6 +102,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   import config from '@/../dev.env'
   import Axiox from '@/axios/index'
   import Cookies from '@/utils/Cookie'
+  import markdown from '@/components/markdown/index'
   import {
     Row,
     Col,
@@ -101,7 +113,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     Spin,
     Icon
   } from 'iview'
-  import MarkDown from '@/components/markdown'
 
   const Autherization = Cookies.getCookieAutherization()
 
@@ -114,7 +125,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         userId: Number(Autherization.pk),
         title: '',
         text: '',
-        initialValue: '## 新增图片粘贴功能',
+        initialValue: '',
         uploadFileImage: [],
         isUpload: {
           default: false,
@@ -136,14 +147,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           Authorization: config.API.TOKENPREFIX + ' ' + Autherization.token
         },
         tinymceHtml: ''
-        /* eslint-disable */
       }
     },
     mounted: function () {
       /* eslint-disable */
     },
     components: {
-      'mark-down': MarkDown,
+      markdown,
       Row,
       Col,
       Input,
@@ -218,22 +228,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         } else {
           this.isVerify = false
         }
-      },
-      onSave: function (value) {
-        /**
-         * value.html 右侧现实的问转义后的内容
-         * value.theme 保存时的主题名字
-         * value.value 编辑器输入的原始内容
-         * 自动保存或者手动保存时触发，返回当前编辑器内原始输入内容和转以后的内容
-         */
-        console.log(value)
-
-      },
-      onPasteImage: function (file) {
-        /**
-         * 粘贴图片，返回当前粘贴的file文件
-         */
-
       }
     },
     computed: {

@@ -62,7 +62,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     Avatar
   } from 'iview'
   import Axios from '@/axios/index'
-  import '@/../public/js/tinymce/skins/content/default/content.css'
+  import '../../assets/js/tinymce/skins/content/default/content.css'
 
   export default {
     name: 'forumArticle',

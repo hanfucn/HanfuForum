@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <router-view name="default"/>
-  </div>
+    <div id="app">
+        <router-view name="default"/>
+    </div>
 </template>
 
 <script>
@@ -9,23 +9,39 @@
     name: 'App',
     // 提供reload方法
     provide: function () {
+      /**
+       * 定义全局方法
+       */
       return {
-        reload: this.reload
+        reload: this.reload,
+        username: this.username,
+        loginSigout: this.loginSigout
       }
     },
-    // isRouterAlive控制显示
     data: function () {
       return {
-        isRouterAlive: true
+        isRouterAlive: true // isRouterAlive控制显示
       }
     },
     methods: {
-      // 刷新方法
       reload: function () {
+        /**
+         * 刷新方法
+         */
         this.isRouterAlive = false
-        // 该方法会在dom更新后执行
         this.$nextTick(function () {
           this.isRouterAlive = true
+        })
+      },
+      username () {
+        return this.$store.getters['auth/getUser']
+      },
+      loginSigout () {
+        /**
+         * 退出登录
+         */
+        this.$nextTick(() => {
+          this.$store.commit('auth/clearAutherization')
         })
       }
     },
@@ -48,29 +64,77 @@
 </script>
 
 <style>
-  #app {
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #515a6e;
-    background-color: #fff;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+    #app {
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #515a6e;
+        background-color: #fff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-  .float-right {
-    float: right;
-  }
+    @media (min-width: 992px) {
+        .container {
+            width: 960px;
+        }
+    }
 
-  .float-left {
-    float: left;
-  }
 
-  .button-margin-10 {
-    margin-left: 10px;
-  }
+    @media (min-width: 1081px) {
+        .container {
+            width: 960px;
+        }
+    }
 
-  .main-width-1200 {
-    width: 1400px;
-  }
+
+    @media (min-width: 992px) {
+        .container {
+            width: 970px;
+        }
+    }
+
+
+    @media (min-width: 768px) {
+        .container {
+            width: 750px;
+        }
+    }
+
+
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        flex-direction: column !important;
+    }
+
+
+    /**
+     * 导航栏主题背景色
+     **/
+    .ivu-layout-header {
+        background: #ffffff !important;
+        z-index: 9999;
+        height: auto !important;
+        line-height: initial !important;
+        padding: 0 !IMPORTANT;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .button-margin-10 {
+        margin-left: 10px;
+    }
+
+    .main-width-1200 {
+        width: 1400px;
+    }
 </style>

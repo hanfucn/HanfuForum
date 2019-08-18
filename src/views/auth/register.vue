@@ -126,7 +126,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     Spin,
     Alert
   } from 'iview'
-  import '@/../public/Icon-tencent/iconfont.css'
+  import '@/assets/Icon-tencent/iconfont.css'
   import Axios from '@/axios/index'
   import Metas from '@/components/auth/meta'
   export default {

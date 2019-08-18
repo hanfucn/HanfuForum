@@ -1,132 +1,108 @@
-<!--
-
-Copyright (C) 2019 张珏敏.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
-
 <template>
-
-  <div>
-
-    <Menu mode="horizontal" theme="light" active-name="1" class="main-header">
-      <div class="float-left">
-        <MenuItem name="0">
-          <Icon type="ios-paper" />
-        </MenuItem>
-        <MenuItem name="1">
-          <Icon type="ios-paper" />
-          活动
-        </MenuItem>
-        <MenuItem name="2">
-          <Icon type="ios-people" />
-          摄影
-        </MenuItem>
-        <MenuItem name="3" :to="{name: 'forum'}">
-          <Icon type="ios-people" />
-          论坛
-        </MenuItem>
-      </div>
-      <div class="float-right">
-        <MenuItem name="4">
-          <Icon type="md-contact" />
-          登录
-        </MenuItem>
-      </div>
-
-    </Menu>
-
-    <Carousel loop class="main-index">
-      <CarouselItem>
-        <div class="index-image">
-          <img src="../assets/0.jpg" alt="">
-          <div class="index-context">
-            111
-          </div>
-        </div>
-      </CarouselItem>
-      <CarouselItem>
-        <div class="index-image">
-          <img src="../assets/1.jpg" alt="">
-          <div class="index-context">
-            222
-          </div>
-        </div>
-      </CarouselItem>
-    </Carousel>
-  </div>
-
+    <div class="forum-header">
+        <forum-header :searchAutoComplete="searchAutoComplete"
+                      :topHeader="topHeader"></forum-header>
+        <router-view name="default"></router-view>
+    </div>
 </template>
 
 <script>
-  import {
-    Carousel,
-    CarouselItem,
-    Menu,
-    MenuItem,
-    Icon
-  } from 'iview'
+  import forumHeader from '@/components/forum/forumHeader'
 
   export default {
-    name: 'index',
-    data: function () {
-      return {}
-    },
+    name: 'forumIndex',
     components: {
-      Carousel,
-      CarouselItem,
-      Menu,
-      MenuItem,
-      Icon
+      'forum-header': forumHeader
+    },
+    data () {
+      return {
+        searchAutoComplete: '',
+        topHeader: [
+          {
+            toRouter: {
+              name: 'index'
+            },
+            name: '活动',
+            icon: 'ios-document',
+            run: null,
+            children: [
+              {
+                title: '汉服汉礼公祭轩辕黄帝大典',
+                count: 10000,
+                default: true, // 官方活动
+                message: '人参与',
+                toRouter: {
+                  name: 'index'
+                },
+                run: null,
+              },
+              {
+                title: '周日陶然亭户外拍摄',
+                count: 60100,
+                default: false, // 官方活动
+                message: '人参与',
+                toRouter: {
+                  name: 'index'
+                },
+                run: null,
+              },
+              {
+                title: '周六后海夜景拍摄',
+                count: 30010,
+                default: false, // 官方活动
+                message: '人参与',
+                toRouter: {
+                  name: 'index'
+                },
+                run: null,
+              },
+            ]
+          },
+          {
+            toRouter: {
+              name: 'index'
+            },
+            name: '文章',
+            icon: 'ios-document',
+            run: null,
+            children: [
+              {
+                title: '什么是汉服',
+                count: 100000,
+                default: false, // 官方活动
+                message: '人参与',
+                toRouter: {
+                  name: 'index'
+                },
+                run: null,
+              },
+            ]
+          }
+        ]
+      }
     }
   }
 </script>
 
 <style scoped>
-  .main-index {
-    overflow: hidden;
-  }
-  .index-image {
-    position: relative;
-    /*overflow: hidden;*/
-    height: 100vh;
-  }
-  .index-image img {
-    width: 100%;
-    height: 100%;
-    /*position: absolute;*/
-  }
-  .index-context {
-    top: 60px;
-    position: absolute;
-  }
-  .main-header {
-    width: 100%;
-    height: auto;
-    position: absolute;
-  }
-  >>> .ivu-menu-light {
-    background: rgba(255,255,255, 0.5);
-  }
-  >>> .ivu-menu-horizontal.ivu-menu-light:after {
-    background: rgba(255,255,255, 0.2);
-  }
-  .float-right {
-    float: right;
-  }
-  .float-left {
-    float: left;
-  }
+    >>> .ivu-menu-horizontal.ivu-menu-light:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: unset;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .demo-auto-complete-group span {
+        color: #666;
+        font-weight: bold;
+    }
+
+    .demo-auto-complete-group a {
+        float: right;
+    }
+
 </style>

@@ -27,10 +27,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 :radius-dot="setting.radiusDot"
                 :trigger="setting.trigger"
                 :arrow="setting.arrow">
-
-        <CarouselItem v-for="(time, key) in authLoginImage" :key="key">
+        <CarouselItem>
           <div class="demo-carousel">
-            <img :src="time.url" alt="">
+            <img src="@/assets/0.jpg" alt="">
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">
+            <img src="@/assets/1.jpg" alt="">
           </div>
         </CarouselItem>
       </Carousel>
@@ -57,7 +61,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     Avatar,
     Checkbox
   } from 'iview'
-  import '@/../public/Icon-tencent/iconfont.css'
+  import '@/assets/Icon-tencent/iconfont.css'
 
   export default {
     name: 'index',
@@ -74,27 +78,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           radiusDot: false,
           trigger: 'click',
           arrow: 'never'
-        },
-        authLoginImage: [
-          {
-            url: require('@/../public/0.jpg')
-          },
-          {
-            url: require('@/../public/1.jpg')
-          },
-          {
-            url: require('@/../public/2.jpg')
-          },
-          {
-            url: require('@/../public/3.jpg')
-          },
-          {
-            url: require('@/../public/4.jpg')
-          },
-          {
-            url: require('@/../public/5.jpg')
-          },
-        ]
+        }
       }
     },
     computed: {

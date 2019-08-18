@@ -1,35 +1,17 @@
-/*
-
-  Copyright (C) 2019 张珏敏.
-
-  This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-*/
-
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const articleIndex = () => import('@/page/forum/index')
-const articleContext = () => import('@/page/forum/articleContext')
-const forumArticle = () => import('@/page/forum/article')
-const AuthIndex = () => import('@/page/auth/index')
-const Login = () => import('@/page/auth/login')
-const Register = () => import('@/page/auth/register')
+const viewsIndex = () => import('@/views/index')
+const forumIndex = () => import('@/views/forum/index')
+const forumArticle = () => import('@/views/forum/article')
 
-const activityIndex = () => import('@/page/activity/index')
+const authIndex = () => import('@/views/auth/index')
+const authLogin = () => import('@/views/auth/login')
+const authRegister = () => import('@/views/auth/register')
 
-import tinycmeVue from '@/page/forum/editing'
+const activityIndex = () => import('@/views/activity/index')
+
+import tinycmeVue from '@/views/forum/editing'
 
 Vue.use(Router)
 
@@ -46,40 +28,40 @@ export default new Router({
       meta: {
         requiresAuth: false
       },
-      component: AuthIndex,
+      component: authIndex,
       children: [
         {
           path: '/auth/login',
           name: 'login',
           components: {
-            auth: Login
+            auth: authLogin
           }
         },
         {
           path: '/auth/register',
           name: 'register',
           components: {
-            auth: Register
+            auth: authRegister
           }
         }
       ]
     },
     {
       path: '/forum',
-      component: articleIndex,
+      component: viewsIndex,
       children: [
         {
           path: '/forum',
           name: 'forum',
           components: {
-            forumIndex: articleContext
+            default: forumIndex
           }
         },
         {
-          path: '/forum/article/:pageId',
+          path: '/forum/:pageId',
           name: 'article',
           components: {
-            forumIndex: forumArticle
+            default: forumArticle
           }
         }
       ]

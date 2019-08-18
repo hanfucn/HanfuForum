@@ -1,144 +1,83 @@
-<!--
-
-Copyright (C) 2019 张珏敏.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
-
 <template>
-  <div class="forum-header">
-    <forum-header :searchAutoComplete="searchAutoComplete"
-                  :searchAutoCompleteData="searchAutoCompleteData"></forum-header>
+    <div class="container">
+        <Row type="flex" justify="center" class="center-text">
+            <div class=" center-text">
+                <Col :md="16">
 
-    <router-view name="forumIndex"></router-view>
-  </div>
+                    <!-- 活动 -->
+<!--                    <div>-->
+<!--                        <ArticleBlock-->
+<!--                                :fiery="true"-->
+<!--                                title="三生三世凤尾归来"-->
+<!--                                message="少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你少绾刚说完话，姬蘅就吓得差点瘫坐在地上，颤抖的说“吾已经嫁给帝君，是天族的人，魔族管不了我的。”刚说完，凤九就说到“哼！天组之人，可你别忘了，你..."-->
+<!--                                fieryNumber="25.4k"-->
+<!--                                :activity="true"-->
+<!--                                :images="require('../../assets/0.jpg')"></ArticleBlock>-->
+<!--                    </div>-->
+                    <!-- 活动 -->
+
+                    <!-- 文章 -->
+                    <ArticleBlock
+                            v-for="(item, key) in forumAricleList"
+                            :key="key"
+                            :pageId="item.id"
+                            :fiery="false"
+                            :title="item.name"
+                            :message="item.text"
+                            :fieryNumber="item.browse"
+                            :images="item.images"></ArticleBlock>
+                    <!-- 文章 -->
+
+                </Col>
+                <Col :md="8">
+                    <Card title="活动" icon="md-flag" :padding="0" shadow>
+                    </Card>
+                    <Card title="百科" icon="md-bookmarks" :padding="0" shadow>
+                    </Card>
+                </Col>
+            </div>
+        </Row>
+
+        <BackTop></BackTop>
+    </div>
 </template>
 
 <script>
-  import forumHeader from '@/components/forum/forumHeader'
+  import {
+    Row,
+    BackTop,
+    Col,
+    Card
+  } from 'iview'
+  import Axios from '@/axios/index'
+  import ArticleBlock from '@/components/forum/ArticleBlock'
 
   export default {
-    name: 'forumIndex',
+    name: 'articleContext',
     components: {
-      'forum-header': forumHeader
+      Row,
+      BackTop,
+      Col,
+      Card,
+      ArticleBlock
     },
     data () {
       return {
-        searchAutoComplete: '',
-        searchAutoCompleteData: [
-          {
-            title: '活动',
-            children: [
-              {
-                title: '汉服汉礼公祭轩辕黄帝大典',
-                count: 10000,
-                default: true, // 官方活动
-                message: '人参与'
-              },
-              {
-                title: '周日陶然亭户外拍摄',
-                count: 60100,
-                message: '人参与'
-              },
-              {
-                title: '周六后海夜景拍摄',
-                count: 30010,
-                message: '人参与'
-              }
-            ]
-          },
-          {
-            title: '文章',
-            children: [
-              {
-                title: '什么是汉服',
-                count: 100000,
-                message: '人气'
-              }
-            ]
-          }
-        ]
+        forumAricleList: []
       }
+    },
+    created: function () {
+      Axios.article('GET', {
+        verify: true
+      }).then(response => {
+        this.forumAricleList = response.data.results
+      })
     }
   }
 </script>
 
 <style scoped>
-
-  >>> .ivu-menu-horizontal {
-    width: 80%;
-  }
-
-  >>> .ivu-menu-horizontal.ivu-menu-light:after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: unset;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-
-  /* 首页轮播 */
-  >>> .ivu-carousel-dots-inside {
-    bottom: 20px;
-  }
-
-
-  /*.index-image {*/
-  /*position: relative;*/
-  /*overflow: hidden;*/
-  /*}*/
-  /*.index-image img {*/
-  /*width: 100%;*/
-  /*height: 100%;*/
-  /*}*/
-
-
-  /**/
-
-
-  .demo-auto-complete-group span {
-    color: #666;
-    font-weight: bold;
-  }
-
-  .demo-auto-complete-group a {
-    float: right;
-  }
-
-
-</style>
-
-<style>
-  body {
-    margin: 0 !important;
-  }
-
-  .forum-context {
-    width: 60%;
-  }
-
-  .center-text {
-    margin-top: 10px;
-  }
-
-  .center-text img {
-    width: 100%;
-    border-radius: 5px;
-  }
+    >>> .ivu-row-flex {
+        display: flow-root !important;
+    }
 </style>
