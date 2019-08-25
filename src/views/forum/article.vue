@@ -18,9 +18,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
 <template>
-    <Row type="flex" justify="center" class="code-row-bg">
-        <Col span="20" style="width: 100%">
-            <div class=" forum-center container">
+    <Row type="flex" justify="center" class="code-row-bg article-container">
+        <Col :md="16" style="width: 100%">
+            <div class="forum-center">
 
                 <h1 class="article">{{ name }}</h1>
 
@@ -41,7 +41,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     <!-- 如果是当前作者，加入编辑按钮 -->
                 </div>
 
-                <div class="forum-context-html show-content" v-html="text"></div>
+                <div class="forum-context-html forum-context-article" v-html="text"></div>
 
 
             </div>
@@ -144,22 +144,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
     >>> .forum-context-html img {
         width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
+
 
     /**/
 
-</style>
-
-<style>
-    .forum-context-article .show-content h2 {
+    >>> .forum-context-article h2 {
         font-size: 24px;
     }
 
-    .forum-context-article .show-content h3 {
+    >>> .forum-context-article h3 {
         font-size: 22px;
     }
 
-    .forum-context-article .show-content p {
+    >>> .forum-context-article p {
         color: #2f2f2f;
         word-break: break-word !important;
         word-break: break-all;
@@ -168,7 +168,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         line-height: 1.7;
     }
 
-    .forum-context-article .show-content h1, .forum-context-article .show-content h2, .forum-context-article .show-content h3, .forum-context-article .show-content h4, .forum-context-article .show-content h5, .forum-context-article .show-content h6 {
+    >>> .forum-context-articleh1, >>> .forum-context-article h2, >>> .forum-context-article h3, >>> .forum-context-article h4, >>> .forum-context-article h5, >>> .forum-context-article h6 {
         margin: 0 0 15px;
         font-weight: 700;
         color: #2f2f2f;
@@ -176,11 +176,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         text-rendering: optimizelegibility;
     }
 
-    .forum-context-article .show-content p {
+    >>> .forum-context-article p {
         margin: 0 0 25px;
+        display: grid;
     }
 
-    .forum-context-article .show-content table {
+    >>> .forum-context-article table {
         width: 100%;
         margin-bottom: 20px;
         border: 1px solid #ddd;
@@ -189,50 +190,50 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         word-break: normal;
     }
 
-    .forum-context-article .show-content table thead th {
+    >>> .forum-context-article table thead th {
         vertical-align: middle;
         text-align: inherit;
     }
 
-    .forum-context-article .show-content table th {
+    >>> .forum-context-article table th {
         font-weight: 700;
     }
 
-    .forum-context-article .show-content table td, .forum-context-article .show-content table th {
+    >>> .forum-context-article table td, >>> .forum-context-article table th {
         padding: 8px;
         border: 1px solid #ddd;
         line-height: 20px;
         vertical-align: middle;
     }
 
-    .forum-context-article .show-content table tr:nth-of-type(2n) {
+    >>> .forum-context-article table tr:nth-of-type(2n) {
         background-color: hsla(0, 0%, 71%, .1);
     }
 
-    .forum-context-article .show-content table th {
+    >>> .forum-context-article table th {
         padding: 8px;
         border: 1px solid #ddd;
         line-height: 20px;
         vertical-align: middle;
     }
 
-    .forum-context-article .show-content ol, .forum-context-article .show-content p, .forum-context-article .show-content ul {
+    >>> .forum-context-article ol, >>> .forum-context-article p, >>> .forum-context-article ul {
         word-break: break-word !important;
         word-break: break-all;
     }
 
-    .forum-context-article .show-content a {
+    >>> .forum-context-article a {
         color: #3194d0;
     }
 
-    .forum-context-article .show-content img {
+    >>> .forum-context-article img {
         padding-bottom: 25px;
-        width: 700px;
-        margin-left: -40px;
+        /*width: 700px;*/
+        /*margin-left: -40px;*/
         text-align: center;
     }
 
-    .forum-context-article .show-content code {
+    >>> .forum-context-article code {
         padding: 2px 4px;
         background-color: #f6f6f6;
         border: none;
@@ -241,7 +242,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         vertical-align: middle;
     }
 
-    .forum-context-article .show-content pre {
+    >>> .forum-context-article pre {
         margin-bottom: 20px;
         padding: 15px;
         font-size: 13px;
@@ -253,7 +254,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         border-radius: 4px;
     }
 
-    pre {
+    >>> pre {
         display: block;
         margin: 0 0 10px;
         font-size: 13px;
@@ -268,18 +269,50 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         background: #fafafe !important;
     }
 
-    .forum-context-article .show-content pre code {
+    >>> .forum-context-article pre code {
         padding: 0;
         background-color: transparent;
         /*white-space: pre;*/
     }
 
-    pre code {
+    >>> pre >>> code {
         padding: 0;
         font-size: inherit;
         color: inherit;
         white-space: pre-wrap;
         background-color: transparent;
         border-radius: 0;
+    }
+
+
+
+
+
+
+
+
+    @media (min-width: 576px) {
+        .article-container {
+            max-width: 440px;
+        }
+    }
+    @media (min-width: 768px) {
+        .article-container {
+            max-width: 520px;
+        }
+    }
+    @media (min-width: 992px) {
+        .article-container {
+            max-width: 660px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .article-container {
+            max-width: 720px;
+        }
+    }
+
+    .article-container {
+        margin: 0 auto;
     }
 </style>

@@ -21,6 +21,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import auth from './module/auth'
+import forumHeader from './module/forumHeader'
 
 import actions from './actions'
 import mutations from './mutations'
@@ -35,7 +36,8 @@ export default new Vuex.Store({
     isRouterAlive: false // isRouterAlive控制显示，提供reload方法刷新App视图
   },
   modules: {
-    auth
+    auth,
+    forumHeader
   },
   actions: actions,
   mutations: mutations,

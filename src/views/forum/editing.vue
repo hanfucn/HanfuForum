@@ -1,51 +1,53 @@
 <template>
-  <Row>
-    <Col span="4" class="menu">
-      <div class="menu-backup">
-        <Button class="button" type="warning" shape="circle" ghost :to="{name: 'forum'}">返回首页</Button>
-      </div>
-      <div class="menu-backup">
-        <Button v-if="isVerify" class="button" type="info" shape="circle" ghost v-on:click="onPublish">发布文章</Button>
-        <Button v-else class="button" type="info" shape="circle" ghost disabled>发布文章</Button>
-      </div>
-
-      <div class="menu-backup" style="padding: 20px">
-
-        <div class="demo-upload-list" v-for="item in uploadFileImage">
-          <template v-if="item.status === 'finished'">
-            <img :src="item.url">
-            <div class="demo-upload-list-cover">
-              <Icon type="ios-eye-outline"></Icon>
-              <Icon type="ios-trash-outline"></Icon>
+    <Row>
+        <Col span="4" class="menu">
+            <div class="menu-backup">
+                <Button class="button" type="warning" shape="circle" ghost :to="{name: 'forum'}">返回首页</Button>
             </div>
-          </template>
-          <template v-else>
-            <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-          </template>
+            <div class="menu-backup">
+                <Button v-if="isVerify" class="button" type="info" shape="circle" ghost v-on:click="onPublish">发布文章
+                </Button>
+                <Button v-else class="button" type="info" shape="circle" ghost disabled>发布文章</Button>
+            </div>
+
+            <div class="menu-backup" style="padding: 20px">
+
+                <div class="demo-upload-list" v-for="item in uploadFileImage">
+                    <template v-if="item.status === 'finished'">
+                        <img :src="item.url">
+                        <div class="demo-upload-list-cover">
+                            <Icon type="ios-eye-outline"></Icon>
+                            <Icon type="ios-trash-outline"></Icon>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+                    </template>
+                </div>
+
+            </div>
+        </Col>
+
+        <Col span="20" class="border-right">
+            <Card :bordered="false" dis-hover>
+                <template slot="title">
+                    <Input v-model="title" placeholder="无标题。。。"/>
+                </template>
+                <markdown v-model="text"
+                          :headers="headers"
+                          :updateData="{key:pid}"
+                          @on-value="gethtml"
+                          :initialValue="initialValue"></markdown>
+            </Card>
+        </Col>
+        <div v-if="isUpload.default">
+            <Spin fix>
+                <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
+                <div>{{ isUpload.message }}</div>
+            </Spin>
         </div>
 
-      </div>
-    </Col>
-
-    <Col span="20" class="border-right">
-      <Card :bordered="false" dis-hover>
-        <template slot="title">
-          <Input v-model="title" placeholder="无标题。。。"/>
-        </template>
-        <markdown v-model="text"
-                  :headers="headers"
-                  @on-value="gethtml"
-                  :initialValue="initialValue"></markdown>
-      </Card>
-    </Col>
-    <div v-if="isUpload.default">
-      <Spin fix>
-        <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
-        <div>{{ isUpload.message }}</div>
-      </Spin>
-    </div>
-
-  </Row>
+    </Row>
 </template>
 
 <script>
@@ -73,6 +75,7 @@
         pid: null,
         isVerify: false,
         userId: Number(Autherization.pk),
+        cid: null,
         title: '',
         text: '',
         html: '',
@@ -126,15 +129,6 @@
       // 文件上传时
       onUploadProgress: function (event, file, fileList) {
       },
-      // 文件上传成功
-      onUploadSuccess: function (response, file, fileList) {
-        console.log(response)
-        this.pid = response.id
-        this.uploadFileImage.push({
-          name: response.images.split('/')[-1],
-          url: response.images
-        })
-      },
       // 文件上传失败
       onUploadError: function (error, file, fileList) {
         if (error) {
@@ -157,12 +151,13 @@
         }
         console.log(this.data)
         if (this.pid) {
-          method = 'PUT'
+          method = 'PATCH'
           index = this.pid
         }
 
         if (this.title) datas['name'] = this.title
         if (this.html) datas['text'] = this.html
+
         this.isUpload.default = true
         Axiox.article(method, datas, index).then(response => {
           this.pid = response.id
@@ -197,6 +192,9 @@
       },
       articleUploadFileImage: function () {
         return this.uploadFileImage
+      },
+      getArticleId: function () {
+        return this.$store.getters['forumHeader/getArticleId']
       }
     },
     watch: {
@@ -210,70 +208,75 @@
       },
       articleUploadFileImage: function (a, b) {
         this.data.images = a
+      },
+      getArticleId: function (a, b) {
+        this.pid = a
+        console.log('cid', this.pid)
+        this.$emit('article-id', a)
       }
     }
   }
 </script>
 
 <style scoped>
-  .border-right {
-    border-right: 1px solid #eff1f2;
-    border-left: 1px solid #eff1f2;
-  }
-
-  .menu {
-    background-color: #404040;
-    height: -webkit-fill-available;
-    color: #f2f2f2;
-  }
-
-  .menu > .menu-backup {
-    width: 100%;
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .menu > .menu-backup > .button {
-    width: 85%;
-  }
-
-  .font-color {
-    color: #eff1f2;
-  }
-
-  .context-text {
-    width: auto;
-    overflow: auto;
-    height: 650px;
-  }
-
-  >>> .ivu-divider-horizontal.ivu-divider-with-text-center, .ivu-divider-horizontal.ivu-divider-with-text-left, .ivu-divider-horizontal.ivu-divider-with-text-right {
-    margin: 12px 0;
-  }
-
-  >>> .ivu-upload-drag {
-    background: unset;
-  }
-
-  .demo-spin-icon-load {
-    animation: ani-demo-spin 1s linear infinite;
-  }
-
-  @keyframes ani-demo-spin {
-    from {
-      transform: rotate(0deg);
+    .border-right {
+        border-right: 1px solid #eff1f2;
+        border-left: 1px solid #eff1f2;
     }
-    50% {
-      transform: rotate(180deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
 
-  .demo-spin-col {
-    height: 100px;
-    position: relative;
-    border: 1px solid #eee;
-  }
+    .menu {
+        background-color: #404040;
+        height: -webkit-fill-available;
+        color: #f2f2f2;
+    }
+
+    .menu > .menu-backup {
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .menu > .menu-backup > .button {
+        width: 85%;
+    }
+
+    .font-color {
+        color: #eff1f2;
+    }
+
+    .context-text {
+        width: auto;
+        overflow: auto;
+        height: 650px;
+    }
+
+    >>> .ivu-divider-horizontal.ivu-divider-with-text-center, .ivu-divider-horizontal.ivu-divider-with-text-left, .ivu-divider-horizontal.ivu-divider-with-text-right {
+        margin: 12px 0;
+    }
+
+    >>> .ivu-upload-drag {
+        background: unset;
+    }
+
+    .demo-spin-icon-load {
+        animation: ani-demo-spin 1s linear infinite;
+    }
+
+    @keyframes ani-demo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .demo-spin-col {
+        height: 100px;
+        position: relative;
+        border: 1px solid #eee;
+    }
 </style>

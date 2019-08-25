@@ -147,6 +147,7 @@
         <el-dialog title="上传图片" :visible.sync="outerVisible">
             <el-upload :action="api + '/app/article-image-update/'" list-type="picture-card"
                        :headers="headers"
+                       :data="updateData"
                        :on-success="updateImageSuccess"
                        :auto-upload="true">
                 <i slot="default" class="el-icon-plus"></i>
@@ -264,11 +265,17 @@
         }
       },
       headers: {
-        type: String,
+        type: Object,
         default: function () {
           return ''
         }
-      }
+      },
+      updateData: {
+        type: Object,
+        default: function () {
+          return {}
+        }
+      },
     },
     data () {
       return {

@@ -4,7 +4,7 @@
         <Row type="flex" v-if="images">
             <Col :md="7" class="text-img">
                 <router-link :to="toRouter()">
-                    <img :src="images">
+                    <img :src="images[0].file">
                 </router-link>
             </Col>
             <Col :md="17">
@@ -99,7 +99,7 @@
         }
       },
       images: {
-        type: String,
+        type: Object,
         default: function () {
           return null // require('../../assets/0.jpg')
         }

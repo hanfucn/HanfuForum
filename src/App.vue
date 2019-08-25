@@ -74,32 +74,7 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    @media (min-width: 992px) {
-        .container {
-            width: 960px;
-        }
-    }
 
-
-    @media (min-width: 1081px) {
-        .container {
-            width: 960px;
-        }
-    }
-
-
-    @media (min-width: 992px) {
-        .container {
-            width: 970px;
-        }
-    }
-
-
-    @media (min-width: 768px) {
-        .container {
-            width: 750px;
-        }
-    }
 
 
     .container {

@@ -53,6 +53,7 @@
                 <b-navbar-nav right>
                     <Button type="primary" shape="circle" class="button-margin-10 "
                             style="margin-right: 15px; color: aliceblue;"
+                            v-on:click="ArticleCreate()"
                             :to="{name: 'editing'}">写文章
                     </Button>
                     <template v-if="!IsVerify">
@@ -60,8 +61,7 @@
                         <Button type="warning" ghost shape="circle" class="button-margin-10"
                                 :to="{name: 'register'}">注册
                         </Button>
-                        <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'login'}">写文章
-                        </Button>
+<!--                        <Button type="primary" shape="circle" class="button-margin-10" :to="{name: 'login'}">写文章</Button>-->
                     </template>
                     <template v-else>
                         <Dropdown @on-click="onDropdownMenu">
@@ -121,6 +121,8 @@
     BNavItemDropdown,
     BDropdownItem
   } from 'bootstrap-vue'
+
+  import Axios from '@/axios/index'
 
   export default {
     name: 'forum-header',
@@ -372,18 +374,31 @@
             }
           }
         }
-
+      },
+      ArticleCreate: function () {
+        Axios.article('POST', {
+          status: 1
+        }).then(response => {
+          console.log('create ', response.data.id)
+          this.$store.commit('forumHeader/setArticleId', response.data.id)
+        })
       }
     },
     computed: {
       verify: function () {
         return this.$store.getters['auth/getVerify']
-      }
+      },
+      // getArticleId: function () {
+      //   return this.$store.getters['forumHeader/getArticleId']
+      // }
     },
     watch: {
       verify: function (a, b) {
         this.IsVerify = a
-      }
+      },
+      // getArticleId:function (a, b) {
+      //   this.$emit('article-id', a)
+      // }
     }
   }
 </script>
@@ -410,9 +425,9 @@
         font-size: xx-large;
     }
 
-    >>> .navbar-nav {
-        display: inline !important;
-    }
+    /*>>> .navbar-nav {*/
+    /*    display: inline !important;*/
+    /*}*/
 
 
     .margin-right {

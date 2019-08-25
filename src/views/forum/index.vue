@@ -25,7 +25,9 @@
                             :title="item.name"
                             :message="item.text"
                             :fieryNumber="item.browse"
-                            :images="item.images"></ArticleBlock>
+                            :images="item.image"></ArticleBlock>
+
+
                     <!-- 文章 -->
 
                 </Col>
