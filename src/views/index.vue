@@ -175,4 +175,46 @@
         float: right;
     }
 
+    /**
+   * 开始 全局
+   */
+    .layout {
+        border: 1px solid #d7dde4;
+        background: #f5f7f9;
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+        /*height: -webkit-fill-available;*/
+    }
+
+    >>> .ivu-layout {
+        background: #FFFFFF !important;
+    }
+
+    .layout >>> .ivu-layout-sider-children .ivu-menu {
+        height: inherit;
+    }
+
+    .layout >>> .layout-header-bar {
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    }
+
+    /**
+     * 结束 全局
+     */
+
+
+    /**
+     * 开始 侧边栏 [展开/收起]
+     */
+    .layout >>> .ivu-layout-sider-trigger {
+        /**
+         * 按钮背景色
+         */
+        color: #515a6e;
+        background: #fff;
+    }
+
+
 </style>

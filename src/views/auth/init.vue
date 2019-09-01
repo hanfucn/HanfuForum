@@ -1,22 +1,3 @@
-<!--
-
-Copyright (C) 2019 张珏敏.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
-
 <template xmlns:v-swiper="http://www.w3.org/1999/xhtml">
   <div>
     <swiper :options="swiperOption" class="aaa">
@@ -31,7 +12,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <div class="container pt-3 mt-5" id="login">
       <div class="row justify-content-md-center mt-5">
         <div class="col-12 mb-5 text-center mt-5">
-          <h1 class="text-white mt-5" style="font-weight: 100;">未来办公网
+          <h1 class="text-white mt-5" style="font-weight: 100;">YTPASS
             <!--<small>后台登录</small>-->
           </h1>
           <div class="m-auto">
@@ -82,16 +63,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
   .auth {
     height: 100vh;
-  }
-
-  .aaa {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    margin: 0 auto;
-    z-index: 0;
   }
 
 </style>

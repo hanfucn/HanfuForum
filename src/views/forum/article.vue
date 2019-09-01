@@ -285,27 +285,24 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     }
 
 
-
-
-
-
-
-
     @media (min-width: 576px) {
         .article-container {
             max-width: 440px;
         }
     }
+
     @media (min-width: 768px) {
         .article-container {
             max-width: 520px;
         }
     }
+
     @media (min-width: 992px) {
         .article-container {
             max-width: 660px;
         }
     }
+
     @media (min-width: 1200px) {
         .article-container {
             max-width: 720px;
