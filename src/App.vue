@@ -65,7 +65,7 @@
 
 <style>
     #app {
-        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","Apple Color Emoji","Emoji Symbols Font","Segoe UI Symbol",Arial,sans-serif;
         font-size: 12px;
         line-height: 1.5;
         color: #515a6e;

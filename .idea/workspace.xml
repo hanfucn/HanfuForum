@@ -3,15 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="c5bf8c9f-abcf-42a0-9edb-482c30376f51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/meta.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/meta.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forum/ArticleBlock.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forum/ArticleBlock.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forum/forumHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forum/forumHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/auth/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/auth/init.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/init.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/auth/register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/forum/article.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/forum/article.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/forum/editing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/forum/editing.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +65,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -150,7 +154,7 @@
       <workItem from="1566706315211" duration="1318000" />
       <workItem from="1566741971978" duration="7414000" />
       <workItem from="1567261396206" duration="7479000" />
-      <workItem from="1567304881793" duration="1044000" />
+      <workItem from="1567304881793" duration="11285000" />
     </task>
     <servers />
   </component>
@@ -177,11 +181,6 @@
           <url>file://$PROJECT_DIR$/src/views/index.vue</url>
           <line>23</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/views/auth/index.vue</url>
-          <line>2</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

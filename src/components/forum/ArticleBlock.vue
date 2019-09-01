@@ -99,7 +99,7 @@
         }
       },
       images: {
-        type: Object,
+        type: Array,
         default: function () {
           return null // require('../../assets/0.jpg')
         }

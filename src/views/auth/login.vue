@@ -1,16 +1,18 @@
 <template>
     <div class="auth">
         <Card :bordered="false" dis-hover>
-            <div slot="title" class="auth-title">
-                <div class="auth-left">
-                    <h5 class="auth-title">登录到网站</h5>
-                    <p class="auth-text">请输入您的用户名和密码</p>
-                </div>
-                <div class="auth-right">
-                    <transition name="fade" mode="out-in">
-                        <Icon v-if="!loginLock" type="ios-lock" :key="0"/>
-                        <Icon v-else type="ios-unlock" :key="1"/>
-                    </transition>
+            <div class="auth-title">
+                <div slot="title">
+                    <div class="auth-left">
+                        <h5 class="auth-title">登录到网站</h5>
+                        <p class="auth-text">请输入您的用户名和密码</p>
+                    </div>
+                    <div class="auth-right">
+                        <transition name="fade" mode="out-in">
+                            <Icon v-if="!loginLock" type="ios-lock" :key="0"/>
+                            <Icon v-else type="ios-unlock" :key="1"/>
+                        </transition>
+                    </div>
                 </div>
             </div>
             <div class="auth-form">
@@ -19,14 +21,14 @@
                     <FormItem prop="username" :error="errorValidate.username.message">
                         <Input type="text" placeholder="邮箱/用户名" size="large"
                                v-model="formValidate.username">
-                            <Icon type="ios-person-outline" slot="prepend"></Icon>
+                            <Icon type="ios-person-outline" slot="prefix"></Icon>
                         </Input>
                     </FormItem>
 
                     <FormItem prop="password" :error="errorValidate.password.message">
                         <Input type="password" placeholder="密码" size="large"
                                v-model="formValidate.password">
-                            <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                            <Icon type="ios-lock-outline" slot="prefix"></Icon>
                         </Input>
                     </FormItem>
 
@@ -36,7 +38,17 @@
                         </Button>
                     </FormItem>
 
-                    <FormItem>
+                    <FormItem class="auth-pc">
+                        <div class="float-left save-login">
+                            <Checkbox style="color: #515a6e !important">保持登录</Checkbox>
+                        </div>
+                        <div class="float-right">
+                            <router-link :to="{name: 'register'}">注册账户</router-link>
+                            <span>&nbsp;|&nbsp;</span>
+                            <router-link to="">忘记密码</router-link>
+                        </div>
+                    </FormItem>
+                    <FormItem class="auth-mobile">
                         <div class="float-left">
                             <Checkbox style="color: #515a6e !important">保持登录</Checkbox>
                         </div>
@@ -49,25 +61,7 @@
                 </Form>
             </div>
 
-            <!--            <Divider style="top: -0.5em; margin: 5px 0;">其他登录方式</Divider>-->
-            <!--            <ul class="auth">-->
-            <!--                <li>-->
-            <!--                    <div class="auth-icon-item">-->
-            <!--                        <Avatar size="large" style="background: #2db7f5;">-->
-            <!--                            <i class="icon-qq"></i>-->
-            <!--                        </Avatar>-->
-            <!--                        <div style="color: #515a6e !important">QQ</div>-->
-            <!--                    </div>-->
-            <!--                </li>-->
-            <!--                <li>-->
-            <!--                    <div class="auth-icon-item">-->
-            <!--                        <Avatar size="large" style="background: #2db7f5;">-->
-            <!--                            <i class="icon-weixin"></i>-->
-            <!--                        </Avatar>-->
-            <!--                        <div style="color: #515a6e !important">微信</div>-->
-            <!--                    </div>-->
-            <!--                </li>-->
-            <!--            </ul>-->
+
             <Spin size="large" fix v-if="isValids"></Spin>
         </Card>
     </div>
@@ -229,108 +223,6 @@
 </script>
 
 <style scoped>
-    >>> .ivu-form-item-content {
-        line-height: 15px;
-    }
-
-    .auth-title {
-        display: flow-root;
-    }
-
-    .auth-center {
-        color: #fff;
-        margin-bottom: 45px;
-        text-align: center;
-
-    }
-
-    .auth-center h1 {
-        font-weight: 100;
-    }
-
-    .auth-left {
-        float: left;
-    }
-
-    .auth-right {
-        float: right;
-    }
-
-    .auth-right i {
-        font-size: 54px;
-        color: #dddddd;
-    }
-
-    .auth-title {
-        color: #2c3e50;
-        text-align: left;
-        margin-bottom: .55rem;
-    }
-
-    .auth-text:last-child {
-        color: #2c3e50;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-
-    .auth-form {
-        padding: 0 10px 0 10px;
-    }
-
-    .auth .text-light {
-        color: #515a6e !important;
-    }
-
-    /* 登录一把锁，动画 */
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
-
-
-    /* 调整其他登录方式 Icon图标大小及位置 */
-    >>> .ivu-avatar-large i {
-        /*font-size: 24px;*/
-    }
-
-    >>> .ivu-avatar-large {
-        width: 35px;
-        height: 35px;
-        align-items: center;
-        display: flex;
-    }
-
-    >>> .ivu-avatar-large span {
-        /*margin: auto;*/
-        /*text-align: center;*/
-        /*line-height: 36px !important;*/
-        /*margin-left: -2.5px;*/
-    }
-
-    >>> .ivu-card {
-        background: rgba(255, 255, 255, 0.9);
-    }
-
-    .auth-icon-item {
-        margin: 5px;
-        padding: 5px;
-        display: inline-block;
-    }
-
-
-    .auth {
-        list-style: none;
-        text-align: center;
-        margin-bottom: 0 !important;
-    }
-
-    .auth li {
-        display: inline;
-    }
 
 
 </style>

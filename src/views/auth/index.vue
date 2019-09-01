@@ -1,25 +1,30 @@
 <template>
     <div class="login">
-        <div class="login-image">
-            <Carousel :loop="setting.loop"
-                      :autoplay="setting.autoplay"
-                      :autoplay-speed="setting.autoplaySpeed"
-                      :dots="setting.dots"
-                      :radius-dot="setting.radiusDot"
-                      :trigger="setting.trigger"
-                      :arrow="setting.arrow">
-                <CarouselItem>
-                    <div class="demo-carousel web_bg"
-                         :style="'background-image: url(' + require('@/assets/0.jpg') + ');'">
-                    </div>
-                </CarouselItem>
-                <CarouselItem>
-                    <div class="demo-carousel web_bg"
-                         :style="'background-image: url(' + require('@/assets/1.jpg') + ');'">
-                    </div>
-                </CarouselItem>
-            </Carousel>
+        <div class="auth-logo">
+            <div class="login-image">
+                <Carousel :loop="setting.loop"
+                          :autoplay="setting.autoplay"
+                          :autoplay-speed="setting.autoplaySpeed"
+                          :dots="setting.dots"
+                          :radius-dot="setting.radiusDot"
+                          :trigger="setting.trigger"
+                          :arrow="setting.arrow">
+                    <CarouselItem>
+                        <div class="demo-carousel web_bg"
+                             :style="'background-image: url(' + require('@/assets/0.jpg') + ');'">
+                        </div>
+                    </CarouselItem>
+                    <CarouselItem>
+                        <div class="demo-carousel web_bg"
+                             :style="'background-image: url(' + require('@/assets/1.jpg') + ');'">
+                        </div>
+                    </CarouselItem>
+                </Carousel>
+            </div>
+
+            <img class="auth-image" :src="require('@/assets/logo.jpg')">
         </div>
+
 
         <b-container fluid class="text-light text-center media-pt">
             <b-row class="m-auto pt-1">
@@ -121,12 +126,16 @@
             width: 100% !important;
         }
 
+        .auth-logo {
+            padding-top: 1rem;
+        }
+
         .auth-login {
             display: none;
         }
 
         .login {
-            padding-top: 5rem;
+            padding-top: 0rem;
             width: 100%;
         }
 
@@ -150,9 +159,24 @@
             display: none;
         }
 
+        >>> .auth-title {
+            display: none;
+        }
+
+        >>> .save-login {
+            display: none;
+        }
+
         .login-image {
             height: auto;
             background: #ffffff;
+        }
+
+        .auth-image {
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+            display: block !important;
         }
     }
 
@@ -225,6 +249,19 @@
         width: 25vw;
         margin: auto;
     }
+
+    >>> input {
+        border-radius: 32px;
+    }
+
+    >>> i {
+        margin-left: 6px;
+    }
+
+    .auth-image {
+        display: none;
+    }
+
 </style>
 
 <style>

@@ -4,7 +4,9 @@
         <b-navbar toggleable="lg">
 
             <b-navbar-brand href="#" left>
-                <div class="layout-logo">{{topName}}</div>
+                <div class="layout-logo">
+                    <img style="height: 35px;" :src="require('@/assets/logo.png')">
+                </div>
             </b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse" @click="onCollapse"></b-navbar-toggle>
@@ -414,15 +416,15 @@
     }
 
     .layout-logo {
-        width: 100px;
-        border-radius: 3px;
-        float: left;
-        position: relative;
-        left: 0;
-        /*line-height: 1.2;*/
-        color: #78baff;
-        font-weight: bolder;
-        font-size: xx-large;
+        /*width: 100px;*/
+        /*border-radius: 3px;*/
+        /*float: left;*/
+        /*position: relative;*/
+        /*left: 0;*/
+        /*!*line-height: 1.2;*!*/
+        /*color: #78baff;*/
+        /*font-weight: bolder;*/
+        /*font-size: xx-large;*/
     }
 
     /*>>> .navbar-nav {*/

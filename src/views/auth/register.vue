@@ -1,69 +1,47 @@
-<!--
-
-Copyright (C) 2019 张珏敏.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
-
-<!-- 注册账户 -->
 <template>
     <div class="auth">
         <Card :bordered="false" dis-hover>
-            <div slot="title" class="auth-title">
-                <div class="auth-left">
-                    <h5 class="auth-title">注册账户</h5>
-                    <p class="auth-text">您注册的账户是登陆网站的唯一凭据</p>
-                </div>
-                <div class="auth-right">
-                    <transition name="fade" mode="out-in">
+            <div class="auth-title">
+                <div slot="title">
+                    <div class="auth-left">
+                        <h5 class="auth-title">注册账户</h5>
+                        <p class="auth-text">您注册的账户是登陆网站的唯一凭据</p>
+                    </div>
+                    <div class="auth-right">
+                        <transition name="fade" mode="out-in">
                         <span v-if="!errorForm.error">
                             <Icon v-if="!loginLock" type="md-person-add" :key="0"/>
                             <Icon v-else class="green" type="md-checkmark-circle-outline" :key="1"/>
                         </span>
-                        <span v-else>
+                            <span v-else>
                             <Icon class="error" type="ios-close-circle-outline"/>
                         </span>
-                    </transition>
+                        </transition>
+                    </div>
                 </div>
             </div>
+
             <div class="auth-form">
                 <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
-                    <FormItem prop="username" :error="errorValidate.username.message">
-                        <Input type="text" placeholder="用户" size="large"
-                               v-model="formValidate.username">
-                            <Icon type="ios-person-outline" slot="prepend"></Icon>
-                        </Input>
-                    </FormItem>
                     <FormItem prop="email" :error="errorValidate.email.message">
                         <Input type="email" placeholder="邮箱" size="large"
                                v-model="formValidate.email">
-                            <Icon type="ios-mail-outline" slot="prepend"/>
+                            <Icon type="ios-mail-outline" slot="prefix" />
                         </Input>
+
                     </FormItem>
                     <FormItem prop="password" :error="errorValidate.password.message">
                         <Input type="password" placeholder="密码" size="large"
                                v-model="formValidate.password"
                                @keyup.enter="onRegister">
-                            <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                            <Icon type="ios-lock-outline" slot="prefix" />
                         </Input>
                     </FormItem>
                     <FormItem prop="subpassword">
                         <Input type="password" placeholder="重复密码" size="large"
                                v-model="formValidate.subpassword"
                                @keyup.enter="onRegister">
-                            <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                            <Icon type="ios-lock-outline" slot="prefix" />
                         </Input>
                     </FormItem>
                     <FormItem>
@@ -80,12 +58,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                         </span>
                         <span v-else>
                             <Button v-if="!errorForm.error"
-                                    type="info"
+                                    type="primary"
                                     shape="circle"
                                     size="large" long
                                     v-on:click="onRegister">注册
                             </Button>
-                            <Button v-else type="info"
+                            <Button v-else type="primary"
                                     shape="circle"
                                     size="large" long
                                     v-on:click="onRegister" disabled>注册
@@ -142,15 +120,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         }
         return callback(new Error('请输入邮箱'))
       }
-      const username = (rule, value, callback) => {
-        this.clearErrorForm()
-        if (value.length > 2) {
-          return callback()
-        } else if (value) {
-          return callback(new Error('用户名需大于3位数'))
-        }
-        return callback(new Error('请输入用户'))
-      }
+      // const username = (rule, value, callback) => {
+      //   this.clearErrorForm()
+      //   if (value.length > 2) {
+      //     return callback()
+      //   } else if (value) {
+      //     return callback(new Error('用户名需大于3位数'))
+      //   }
+      //   return callback(new Error('请输入用户'))
+      // }
       const password = (rule, value, callback) => {
         this.clearErrorForm()
         if (value.length > 6) {
@@ -183,7 +161,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         },
         formValidate: {
           email: '',
-          username: '',
+          // username: '',
           password: '',
           subpassword: ''
         },
@@ -203,12 +181,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               message: '您输入的不是邮箱哦！'
             }
           ],
-          username: [
-            {
-              required: true,
-              validator: username
-            }
-          ],
+          // username: [
+          //   {
+          //     required: true,
+          //     validator: username
+          //   }
+          // ],
           password: [
             {
               required: true,
@@ -230,9 +208,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           email: {
             message: null
           },
-          username: {
-            message: null
-          },
+          // username: {
+          //   message: null
+          // },
           password: {
             message: null
           }
@@ -250,7 +228,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             this.isValids = true
             Axios.authorizationRegister('POST', {
               email: this.formValidate.email,
-              username: this.formValidate.username,
+              // username: this.formValidate.username,
               password: this.formValidate.password
             }).then(response => {
               this.isValids = false
@@ -265,9 +243,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 // }
                 if (error.status === 400 && error.data) {
                   if (error.data.email) this.errorValidate.email.message = error.data.email[0]
-                  if (error.data.username) this.errorValidate.username.message = error.data.username[0]
+                  // if (error.data.username) this.errorValidate.username.message = error.data.username[0]
                   if (error.data.password) this.errorValidate.password.message = error.data.password[0]
-                  if (error.data.email || error.data.username || error.data.password) {
+                  if (error.data.email || error.data.password) {
                     this.errorForm.error = true
                     this.errorForm.message = '注册账号失败，请核对账号信息'
                   }
@@ -285,7 +263,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         this.errorForm.error = false
         this.errorForm.message = null
         this.errorValidate.email.message = null
-        this.errorValidate.username.message = null
+        // this.errorValidate.username.message = null
         this.errorValidate.password.message = null
       }
     },

@@ -29,15 +29,20 @@
         </Col>
 
         <Col span="20" class="border-right">
-            <Card :bordered="false" dis-hover>
+            <Card :bordered="false" dis-hover style="width: 415px; float: left; margin: 0 auto;">
                 <template slot="title">
                     <Input v-model="title" placeholder="无标题。。。"/>
                 </template>
-                <markdown v-model="text"
-                          :headers="headers"
-                          :updateData="{key:pid}"
-                          @on-value="gethtml"
-                          :initialValue="initialValue"></markdown>
+                <!--                <markdown v-model="text"-->
+                <!--                          :headers="headers"-->
+                <!--                          :updateData="{key:pid}"-->
+                <!--                          @on-value="gethtml"-->
+                <!--                          :initialValue="initialValue"></markdown>-->
+
+                <editor v-model="tinyValue" api-key="u4aqvp838kgicpb4gotilbvwy26dbu8385bmd1d5s0xq7kap" :init="init"></editor>
+            </Card>
+            <Card style="width: 415px; float: left; margin: 0 auto;">
+                <div v-html="tinyValue"></div>
             </Card>
         </Col>
         <div v-if="isUpload.default">
@@ -55,6 +60,22 @@
   import Axiox from '@/axios/index'
   import Cookies from '@/utils/Cookie'
   import markdown from '@/components/markdown/index'
+  import Editor from '@tinymce/tinymce-vue'
+  import tinymce from 'tinymce/tinymce'
+  import 'tinymce/themes/silver'
+  import 'tinymce/plugins/image'// 插入上传图片插件
+  import 'tinymce/plugins/media'// 插入视频插件
+  import 'tinymce/plugins/table'// 插入表格插件
+  import 'tinymce/plugins/lists'// 列表插件
+  import 'tinymce/plugins/wordcount'// 字数统计插件
+  import 'tinymce/plugins/autolink'
+  import 'tinymce/plugins/autosave'
+  import 'tinymce/plugins/codesample'
+  import 'tinymce/plugins/link'
+  import 'tinymce/plugins/quickbars'
+  import 'tinymce/plugins/codesample'
+  import 'tinymce/plugins/codesample'
+
   import {
     Row,
     Col,
@@ -72,6 +93,7 @@
     name: 'forumEditing',
     data: function () {
       return {
+        tinyValue: '123',
         pid: null,
         isVerify: false,
         userId: Number(Autherization.pk),
@@ -100,11 +122,32 @@
         headers: {
           Authorization: config.API.TOKENPREFIX + ' ' + Autherization.token
         },
-        tinymceHtml: ''
+        tinymceHtml: '',
+        init: {
+          language_url: '/tinymce/langs/zh_CN.js',// 语言包的路径
+          language: 'zh_CN',//语言
+          skin_url: '/tinymce/skins/ui/oxide',// skin路径，注意这个，很多网上教程都是skins/lightgray，但是发现其实并没有这个玩意儿
+          height: 630,
+          plugins: 'lists image media table wordcount autolink autosave codesample link quickbars',
+          toolbar: 'undo redo |  formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat',
+          // branding: false
+          images_upload_handler: (blobInfo, success, failure) => {
+            const img = 'data:image/jpeg;base64,' + blobInfo.base64()
+            success(img)
+          },
+          selector: '.dfree-body',
+          // toolbar: false,
+          quickbars_insert_toolbar: 'quicktable image',
+          quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote quicklink',
+          contextmenu: 'inserttable | cell row column deletetable undo redo |  formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat',
+          powerpaste_word_import: 'clean',
+          powerpaste_html_import: 'clean'
+        }
       }
     },
     mounted: function () {
       /* eslint-disable */
+      tinymce.init({})
     },
     components: {
       markdown,
@@ -115,7 +158,8 @@
       Button,
       Upload,
       Spin,
-      Icon
+      Icon,
+      'editor': Editor
     },
     methods: {
       gethtml: function (html) {
