@@ -48,16 +48,16 @@
                             <router-link to="">忘记密码</router-link>
                         </div>
                     </FormItem>
-                    <FormItem class="auth-mobile">
-                        <div class="float-left">
-                            <Checkbox style="color: #515a6e !important">保持登录</Checkbox>
-                        </div>
-                        <div class="float-right">
-                            <router-link :to="{name: 'register'}">注册账户</router-link>
-                            <span>&nbsp;|&nbsp;</span>
-                            <router-link to="">忘记密码</router-link>
-                        </div>
-                    </FormItem>
+<!--                    <FormItem class="auth-mobile">-->
+<!--                        <div class="float-left">-->
+<!--                            <Checkbox style="color: #515a6e !important">保持登录</Checkbox>-->
+<!--                        </div>-->
+<!--                        <div class="float-right">-->
+<!--                            <router-link :to="{name: 'register'}">注册账户</router-link>-->
+<!--                            <span>&nbsp;|&nbsp;</span>-->
+<!--                            <router-link to="">忘记密码</router-link>-->
+<!--                        </div>-->
+<!--                    </FormItem>-->
                 </Form>
             </div>
 

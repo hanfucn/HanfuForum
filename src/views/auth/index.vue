@@ -178,6 +178,10 @@
             text-align: center;
             display: block !important;
         }
+
+        /*.web_bg {*/
+        /*  height: 100vh;*/
+        /*}*/
     }
 
     @media (min-width: 576px) {
@@ -228,7 +232,8 @@
     .web_bg {
         zoom: 1;
         width: 100%;
-        height: inherit;
+        /*height: inherit;*/
+        height: 100vh;
         z-index: -10;
         background-color: #fff;
         background-repeat: no-repeat;
